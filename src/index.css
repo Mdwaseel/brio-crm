@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand — derived from brio-logo.svg (#234a67 wordmark, #a47d57 mark) */
+    --brand-primary: 35 74 103;
+    --brand-primary-hover: 30 61 85;
+    --brand-primary-light: 226 235 242;
+    --brand-secondary: 164 125 87;
+    --brand-accent: 189 148 105;
+
+    --surface: 255 255 255;
+    --surface-muted: 248 250 251;
+    --surface-sunken: 242 245 248;
+    --border: 226 232 238;
+    --border-strong: 205 214 223;
+
+    --text-primary: 16 30 43;
+    --text-secondary: 89 104 120;
+    --text-tertiary: 132 146 160;
+
+    --success: 18 128 92;
+    --warning: 180 106 6;
+    --danger: 192 43 38;
+    --info: 30 111 191;
+  }
+
+  * { border-color: rgb(var(--border)); }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    @apply bg-surface-muted text-ink font-sans antialiased;
+    font-size: 14px;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  ::selection { background: rgb(var(--brand-primary) / .16); }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--brand-primary) / .55);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  h1, h2, h3, h4 { @apply font-display text-ink; letter-spacing: -0.015em; }
+}
+
+@layer components {
+  .num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
+
+  .card {
+    @apply bg-surface border border-line rounded-xl shadow-xs;
+  }
+
+  .panel-title { @apply font-display text-[15px] font-semibold text-ink; }
+
+  .scroll-thin { scrollbar-width: thin; scrollbar-color: rgb(var(--border-strong)) transparent; }
+  .scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+  .scroll-thin::-webkit-scrollbar-thumb { background: rgb(var(--border-strong)); border-radius: 999px; }
+  .scroll-thin::-webkit-scrollbar-track { background: transparent; }
+}
