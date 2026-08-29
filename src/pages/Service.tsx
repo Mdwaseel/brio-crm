@@ -162,7 +162,7 @@ export function Service() {
               <CartesianGrid stroke={CHART.grid} vertical={false} />
               <XAxis dataKey="month" {...AXIS_PROPS} />
               <YAxis {...AXIS_PROPS} domain={[90, 100]} width={40} />
-              <RTooltip content={<ChartTooltip formatter={(v) => `${v}%`} />} cursor={{ fill: 'rgba(35,74,103,.05)' }} />
+              <RTooltip content={<ChartTooltip formatter={(v) => `${v}%`} />} cursor={{ fill: 'rgba(18,53,42,.05)' }} />
               <Bar dataKey="compliance" name="SLA compliance" radius={[4, 4, 0, 0]} barSize={26} fill={CHART.brand} />
             </BarChart>
           </ResponsiveContainer>

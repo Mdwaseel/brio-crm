@@ -42,12 +42,12 @@ export function initials(name: string): string {
 }
 
 const AVATAR_TONES = [
-  'bg-brand-100 text-brand-700',
-  'bg-bronze-100 text-bronze-700',
+  'bg-forest-100 text-forest-800',
+  'bg-lime-200 text-lime-900',
   'bg-info-soft text-info-ink',
   'bg-success-soft text-success-ink',
   'bg-warning-soft text-warning-ink',
-  'bg-brand-700 text-white',
+  'bg-forest-900 text-lime-300',
 ]
 
 export function toneFor(seed: string): string {

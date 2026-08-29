@@ -4,7 +4,7 @@ export { Input, Select, Textarea, Checkbox, Label, Toggle } from './Field'
 export { Badge, Pill, StatusBadge, Trend } from './Badge'
 export type { Tone } from './Badge'
 export { Avatar, AvatarGroup } from './Avatar'
-export { Card, CardHeader, CardBody, ChartCard, KpiCard, MiniKpi, StatRow } from './Card'
+export { Card, CardHeader, CardBody, ChartCard, KpiCard, MiniKpi, StatTile, StatRow } from './Card'
 export {
   Modal, Drawer, Dropdown, MenuItem, MenuLabel, MenuDivider, Tooltip, ToastProvider, useToast,
 } from './Overlay'

@@ -41,15 +41,14 @@ export function AlertCard({ alert }: { alert: AlertType }) {
   return (
     <article
       className={cn(
-        'relative bg-surface border border-line rounded-xl overflow-hidden shadow-xs flex flex-col',
-        'transition-[box-shadow,border-color,transform] duration-200 hover:shadow-md hover:-translate-y-px',
-        meta.ring,
+        'relative bg-surface ring-1 ring-black/[0.04] rounded-2xl overflow-hidden shadow-xs flex flex-col',
+        'transition-[box-shadow,transform] duration-200 hover:shadow-lift hover:-translate-y-0.5',
       )}
     >
-      <span className={cn('absolute left-0 inset-y-0 w-[3px]', meta.bar)} aria-hidden />
+      <span className={cn('absolute left-0 inset-y-0 w-1', meta.bar)} aria-hidden />
       <div className="p-4 pl-5 flex-1">
         <div className="flex items-center justify-between gap-3">
-          <span className={cn('inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider border rounded px-1.5 py-0.5', meta.chip)}>
+          <span className={cn('inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider border rounded-full px-2 py-0.5', meta.chip)}>
             <Icon size={11} />
             {meta.label}
           </span>
@@ -70,10 +69,10 @@ export function AlertCard({ alert }: { alert: AlertType }) {
         </div>
       </div>
 
-      <div className="px-4 pl-5 py-2.5 border-t border-line bg-surface-muted/60 flex items-center justify-between gap-3">
+      <div className="px-4 pl-5 py-3 border-t border-line/70 flex items-center justify-between gap-3">
         <button
           onClick={() => demo(alert.action)}
-          className="inline-flex items-center gap-1.5 text-2xs font-semibold text-brand-700 hover:text-brand-800 hover:gap-2 transition-all"
+          className="inline-flex items-center gap-1.5 text-2xs font-semibold text-forest-800 hover:gap-2 transition-all"
         >
           {alert.action}
           <ArrowRight size={12} />
@@ -92,7 +91,7 @@ export function AlertCard({ alert }: { alert: AlertType }) {
 export function HealthAlertGrid({ limit }: { limit?: number }) {
   const list = limit ? alerts.slice(0, limit) : alerts
   return (
-    <div className="grid gap-3.5 sm:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
       {list.map((a) => (
         <AlertCard key={a.id} alert={a} />
       ))}

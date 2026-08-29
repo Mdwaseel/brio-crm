@@ -129,7 +129,7 @@ export function Employees() {
               <CartesianGrid stroke={CHART.grid} vertical={false} />
               <XAxis dataKey="name" {...AXIS_PROPS} tickFormatter={(v: string) => v.split(' ')[0]} />
               <YAxis {...AXIS_PROPS} domain={[0, 100]} width={40} />
-              <RTooltip content={<ChartTooltip formatter={(v) => `${v}% of capacity`} />} cursor={{ fill: 'rgba(35,74,103,.05)' }} />
+              <RTooltip content={<ChartTooltip formatter={(v) => `${v}% of capacity`} />} cursor={{ fill: 'rgba(18,53,42,.05)' }} />
               <ReferenceLine y={90} stroke={CHART.danger} strokeDasharray="4 3" />
               <Bar dataKey="workload" name="Workload" radius={[4, 4, 0, 0]} barSize={30}>
                 {workloadBalance.map((w) => (
@@ -286,7 +286,7 @@ export function Employees() {
                   <ResponsiveContainer width="100%" height={260}>
                     <RadarChart data={radarData} outerRadius="72%">
                       <PolarGrid stroke={CHART.grid} />
-                      <PolarAngleAxis dataKey="axis" tick={{ fill: '#7c8b99', fontSize: 11 }} />
+                      <PolarAngleAxis dataKey="axis" tick={{ fill: '#86948b', fontSize: 11 }} />
                       <Radar name={selected.name} dataKey="value" stroke={CHART.brand} fill={CHART.brand} fillOpacity={0.18} strokeWidth={2} />
                       <RTooltip content={<ChartTooltip />} />
                     </RadarChart>

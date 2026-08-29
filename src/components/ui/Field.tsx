@@ -3,9 +3,9 @@ import type { InputHTMLAttributes, SelectHTMLAttributes, TextareaHTMLAttributes,
 import { cn } from '@/lib/utils'
 
 const BASE =
-  'w-full bg-surface border border-line rounded-lg text-[13px] text-ink placeholder:text-ink-3 ' +
+  'w-full bg-surface border border-line rounded-xl text-[13px] text-ink placeholder:text-ink-3 ' +
   'transition-[border-color,box-shadow] duration-150 hover:border-line-strong ' +
-  'focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 disabled:bg-surface-sunken disabled:text-ink-3'
+  'focus:outline-none focus:border-lime-500 focus:ring-2 focus:ring-lime-500/25 disabled:bg-surface-sunken disabled:text-ink-3'
 
 export function Label({ children, htmlFor, hint }: { children: ReactNode; htmlFor?: string; hint?: string }) {
   return (
@@ -72,8 +72,8 @@ export function Checkbox({ label, id, ...rest }: InputHTMLAttributes<HTMLInputEl
         id={id}
         type="checkbox"
         className={cn(
-          'h-4 w-4 rounded-[4px] border border-line-strong bg-surface appearance-none cursor-pointer',
-          'checked:bg-brand-700 checked:border-brand-700 transition-colors duration-150',
+          'h-4 w-4 rounded-md border border-line-strong bg-surface appearance-none cursor-pointer',
+          'checked:bg-forest-900 checked:border-forest-900 transition-colors duration-150',
           'bg-[length:12px] bg-center bg-no-repeat',
           "checked:bg-[url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E\")]",
         )}
@@ -94,7 +94,7 @@ export function Toggle({ checked, onChange, label }: { checked: boolean; onChang
       onClick={() => onChange(!checked)}
       className={cn(
         'relative h-5 w-9 rounded-full transition-colors duration-200 shrink-0',
-        checked ? 'bg-brand-700' : 'bg-line-strong',
+        checked ? 'bg-forest-900' : 'bg-line-strong',
       )}
     >
       <span

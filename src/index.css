@@ -4,27 +4,31 @@
 
 @layer base {
   :root {
-    /* Brand — derived from brio-logo.svg (#234a67 wordmark, #a47d57 mark) */
-    --brand-primary: 35 74 103;
-    --brand-primary-hover: 30 61 85;
-    --brand-primary-light: 226 235 242;
-    --brand-secondary: 164 125 87;
-    --brand-accent: 189 148 105;
+    /* Brand — forest green ink with a spring-green accent */
+    --brand-primary: 18 53 42;
+    --brand-primary-hover: 11 33 26;
+    --brand-primary-light: 220 239 227;
+    --brand-secondary: 143 209 63;
+    --brand-accent: 168 224 90;
 
     --surface: 255 255 255;
-    --surface-muted: 248 250 251;
-    --surface-sunken: 242 245 248;
-    --border: 226 232 238;
-    --border-strong: 205 214 223;
+    --surface-muted: 244 246 242;
+    --surface-sunken: 237 241 235;
+    --border: 229 233 226;
+    --border-strong: 213 219 209;
 
-    --text-primary: 16 30 43;
-    --text-secondary: 89 104 120;
-    --text-tertiary: 132 146 160;
+    --text-primary: 14 29 22;
+    --text-secondary: 90 105 96;
+    --text-tertiary: 134 148 139;
 
-    --success: 18 128 92;
-    --warning: 180 106 6;
-    --danger: 192 43 38;
-    --info: 30 111 191;
+    --success: 31 143 95;
+    --warning: 180 119 10;
+    --danger: 214 63 63;
+    --info: 43 127 184;
+
+    /* Hero gradient stops */
+    --hero-from: 143 209 63;
+    --hero-to: 194 236 126;
   }
 
   * { border-color: rgb(var(--border)); }
@@ -37,28 +41,52 @@
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
-  ::selection { background: rgb(var(--brand-primary) / .16); }
+  ::selection { background: rgb(var(--brand-secondary) / .38); }
 
   :focus-visible {
-    outline: 2px solid rgb(var(--brand-primary) / .55);
+    outline: 2px solid rgb(var(--brand-primary) / .5);
     outline-offset: 2px;
-    border-radius: 6px;
+    border-radius: 10px;
   }
 
-  h1, h2, h3, h4 { @apply font-display text-ink; letter-spacing: -0.015em; }
+  h1, h2, h3, h4 { @apply font-display text-ink; letter-spacing: -0.02em; }
 }
 
 @layer components {
   .num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
 
+  /* Soft, borderless card — the base surface of the whole system */
   .card {
-    @apply bg-surface border border-line rounded-xl shadow-xs;
+    @apply bg-surface rounded-2xl shadow-xs ring-1 ring-black/[0.04];
   }
 
   .panel-title { @apply font-display text-[15px] font-semibold text-ink; }
+
+  /*
+   * Spring-green hero surface: concentric rings over organic light blooms.
+   * All layers live in one `background` declaration — splitting the rings into
+   * a second class would reset background-image and erase the gradient beneath.
+   */
+  .hero-green {
+    background:
+      radial-gradient(circle at 78% 26%, transparent 34%, rgb(255 255 255 / .18) 34.5%, transparent 36%),
+      radial-gradient(circle at 78% 26%, transparent 46%, rgb(255 255 255 / .14) 46.5%, transparent 48%),
+      radial-gradient(circle at 78% 26%, transparent 60%, rgb(255 255 255 / .11) 60.5%, transparent 62%),
+      radial-gradient(120% 130% at 88% 8%, rgb(var(--hero-to) / .95) 0%, transparent 55%),
+      radial-gradient(90% 110% at 8% 95%, rgb(255 255 255 / .32) 0%, transparent 52%),
+      linear-gradient(135deg, rgb(var(--hero-from)) 0%, rgb(var(--hero-to)) 100%);
+  }
 
   .scroll-thin { scrollbar-width: thin; scrollbar-color: rgb(var(--border-strong)) transparent; }
   .scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
   .scroll-thin::-webkit-scrollbar-thumb { background: rgb(var(--border-strong)); border-radius: 999px; }
   .scroll-thin::-webkit-scrollbar-track { background: transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
 }

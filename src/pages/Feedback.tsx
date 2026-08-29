@@ -83,7 +83,7 @@ export function Feedback() {
           <ResponsiveContainer width="100%" height={260}>
             <RadarChart data={themeRadar} outerRadius="70%">
               <PolarGrid stroke={CHART.grid} />
-              <PolarAngleAxis dataKey="axis" tick={{ fill: '#7c8b99', fontSize: 10 }} />
+              <PolarAngleAxis dataKey="axis" tick={{ fill: '#86948b', fontSize: 10 }} />
               <Radar name="Score" dataKey="value" stroke={CHART.brand} fill={CHART.brand} fillOpacity={0.18} strokeWidth={2} />
               <RTooltip content={<ChartTooltip />} />
             </RadarChart>
@@ -287,7 +287,7 @@ export function Feedback() {
                     <XAxis type="number" domain={[0, 100]} {...AXIS_PROPS} />
                     <YAxis type="category" dataKey="name" {...AXIS_PROPS} width={92}
                       tickFormatter={(v: string) => v.split(' ')[0]} />
-                    <RTooltip content={<ChartTooltip formatter={(v) => `${v}% capacity`} />} cursor={{ fill: 'rgba(35,74,103,.05)' }} />
+                    <RTooltip content={<ChartTooltip formatter={(v) => `${v}% capacity`} />} cursor={{ fill: 'rgba(18,53,42,.05)' }} />
                     <Bar dataKey="workload" name="Workload" radius={[0, 4, 4, 0]} barSize={16}>
                       {workloadBalance.map((w) => (
                         <Cell key={w.name} fill={w.workload >= 90 ? CHART.danger : w.workload >= 80 ? CHART.warning : CHART.brand} />

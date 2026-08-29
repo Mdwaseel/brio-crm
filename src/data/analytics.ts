@@ -10,11 +10,11 @@ export const revenueSeries = [
 ]
 
 export const pipelineStages = [
-  { stage: 'New', value: 4230000, count: 18, fill: '#95b6cd' },
-  { stage: 'Qualified', value: 6480000, count: 14, fill: '#5f8fae' },
-  { stage: 'Proposal', value: 4900000, count: 9, fill: '#3d7093' },
-  { stage: 'Negotiation', value: 2610000, count: 5, fill: '#2e5a79' },
-  { stage: 'Won', value: 6610000, count: 7, fill: '#234a67' },
+  { stage: 'New', value: 4230000, count: 18, fill: '#d8f4a8' },
+  { stage: 'Qualified', value: 6480000, count: 14, fill: '#a8e05a' },
+  { stage: 'Proposal', value: 4900000, count: 9, fill: '#5aa77f' },
+  { stage: 'Negotiation', value: 2610000, count: 5, fill: '#236e4c' },
+  { stage: 'Won', value: 6610000, count: 7, fill: '#12352a' },
 ]
 
 export const ticketSeries = [
@@ -37,9 +37,9 @@ export const departmentPerformance = [
 ]
 
 export const customerHealth = [
-  { name: 'Healthy', value: 812, fill: '#12805c' },
-  { name: 'Monitor', value: 341, fill: '#b46a06' },
-  { name: 'At Risk', value: 131, fill: '#c02b26' },
+  { name: 'Healthy', value: 812, fill: '#12352a' },
+  { name: 'Monitor', value: 341, fill: '#a8e05a' },
+  { name: 'At Risk', value: 131, fill: '#d63f3f' },
 ]
 
 export const employeeHealthSeries = [

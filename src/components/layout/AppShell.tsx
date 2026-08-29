@@ -40,7 +40,7 @@ export function AppShell({ onSignOut }: { onSignOut: () => void }) {
         onProfileClick={() => navigate('/settings/users')}
       />
 
-      <div className={cn('transition-[padding] duration-300', collapsed ? 'lg:pl-[72px]' : 'lg:pl-[252px]')}>
+      <div className={cn('transition-[padding] duration-300', collapsed ? 'lg:pl-[80px]' : 'lg:pl-[264px]')}>
         <Topbar
           onMenuClick={() => setMobileOpen(true)}
           onSearchClick={() => setSearchOpen(true)}
@@ -49,7 +49,7 @@ export function AppShell({ onSignOut }: { onSignOut: () => void }) {
             setTimeout(onSignOut, 350)
           }}
         />
-        <main key={location.pathname} className="px-4 sm:px-6 lg:px-7 py-6 lg:py-7 animate-fade-up">
+        <main key={location.pathname} className="px-4 sm:px-6 lg:px-7 pb-8 pt-1 animate-fade-up">
           <div className="mx-auto max-w-[1560px]">
             <Outlet />
           </div>

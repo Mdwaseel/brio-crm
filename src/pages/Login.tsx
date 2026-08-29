@@ -29,7 +29,7 @@ export function Login({ onSignIn }: { onSignIn: () => void }) {
       <section className="relative hidden lg:flex flex-col justify-between bg-brand-900 text-white p-12 xl:p-16 overflow-hidden">
         <div
           className="absolute -top-40 -right-32 h-[520px] w-[520px] rounded-full opacity-25 blur-3xl"
-          style={{ background: 'radial-gradient(circle, #a47d57 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(circle, #a8e05a 0%, transparent 70%)' }}
           aria-hidden
         />
         <div className="relative">
@@ -56,7 +56,7 @@ export function Login({ onSignIn }: { onSignIn: () => void }) {
           <div className="mt-10 space-y-5">
             {PILLARS.map((p) => (
               <div key={p.title} className="flex items-start gap-3.5">
-                <span className="h-9 w-9 rounded-lg bg-white/10 ring-1 ring-white/15 inline-flex items-center justify-center shrink-0">
+                <span className="h-10 w-10 rounded-full bg-white/10 ring-1 ring-white/15 inline-flex items-center justify-center shrink-0">
                   <p.icon size={17} className="text-bronze-300" />
                 </span>
                 <div>
@@ -72,7 +72,7 @@ export function Login({ onSignIn }: { onSignIn: () => void }) {
           <div className="flex items-center gap-1.5 flex-wrap">
             {FLOW.map((step, i) => (
               <span key={step} className="inline-flex items-center gap-1.5">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-brand-200/70 border border-white/10 rounded px-2 py-1 bg-white/[0.04]">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-forest-200/70 border border-white/10 rounded-full px-2.5 py-1 bg-white/[0.04]">
                   {step}
                 </span>
                 {i < FLOW.length - 1 && <ArrowRight size={11} className="text-bronze-400/70" />}
@@ -136,7 +136,7 @@ export function Login({ onSignIn }: { onSignIn: () => void }) {
               <button
                 type="button"
                 onClick={() => demo('Password reset link sent')}
-                className="text-[13px] font-medium text-brand-700 hover:text-brand-800 hover:underline"
+                className="text-[13px] font-medium text-forest-800 hover:underline"
               >
                 Forgot password?
               </button>
@@ -148,8 +148,8 @@ export function Login({ onSignIn }: { onSignIn: () => void }) {
             </Button>
           </form>
 
-          <div className="mt-6 flex items-start gap-2.5 rounded-xl border border-line bg-surface-muted px-3.5 py-3">
-            <ShieldCheck size={15} className="text-brand-600 mt-0.5 shrink-0" />
+          <div className="mt-6 flex items-start gap-2.5 rounded-2xl bg-surface-muted px-4 py-3.5">
+            <ShieldCheck size={15} className="text-forest-700 mt-0.5 shrink-0" />
             <p className="text-2xs text-ink-2 leading-relaxed">
               This is a static prototype. Credentials are pre-filled and no data leaves your browser —
               authentication, roles and audit trails are wired up in the production build.
@@ -158,7 +158,7 @@ export function Login({ onSignIn }: { onSignIn: () => void }) {
 
           <p className="text-2xs text-ink-3 text-center mt-8">
             Need access for your team?{' '}
-            <button onClick={() => demo('Request sent to workspace admin')} className="font-medium text-brand-700 hover:underline">
+            <button onClick={() => demo('Request sent to workspace admin')} className="font-medium text-forest-800 hover:underline">
               Contact your workspace admin
             </button>
           </p>

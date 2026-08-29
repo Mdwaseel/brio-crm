@@ -52,20 +52,20 @@ export function Modal({
   const widths = { sm: 'max-w-md', md: 'max-w-xl', lg: 'max-w-3xl', xl: 'max-w-5xl' }
   return createPortal(
     <div className="fixed inset-0 z-[80] flex items-start justify-center p-4 sm:p-6 overflow-y-auto scroll-thin">
-      <div className="fixed inset-0 bg-brand-950/45 backdrop-blur-[2px] animate-fade-in" onClick={onClose} />
+      <div className="fixed inset-0 bg-forest-950/45 backdrop-blur-[2px] animate-fade-in" onClick={onClose} />
       <div
         role="dialog"
         aria-modal="true"
         aria-label={title}
         className={cn(
-          'relative w-full my-auto bg-surface rounded-2xl shadow-pop border border-line animate-scale-in',
+          'relative w-full my-auto bg-surface rounded-3xl shadow-pop animate-scale-in',
           widths[size],
         )}
       >
         <div className="flex items-start justify-between gap-4 px-5 py-4 border-b border-line">
           <div className="flex items-start gap-3 min-w-0">
             {icon && (
-              <span className="h-9 w-9 rounded-lg bg-brand-50 text-brand-700 inline-flex items-center justify-center shrink-0">
+              <span className="h-9 w-9 rounded-full bg-lime-100 text-forest-800 inline-flex items-center justify-center shrink-0">
                 {icon}
               </span>
             )}
@@ -80,7 +80,7 @@ export function Modal({
         </div>
         <div className="px-5 py-5 max-h-[65vh] overflow-y-auto scroll-thin">{children}</div>
         {footer && (
-          <div className="px-5 py-3.5 border-t border-line bg-surface-muted rounded-b-2xl flex items-center justify-end gap-2">
+          <div className="px-5 py-3.5 border-t border-line bg-surface-muted rounded-b-3xl flex items-center justify-end gap-2">
             {footer}
           </div>
         )}
@@ -117,7 +117,7 @@ export function Drawer({
   const widths = { sm: 'max-w-md', md: 'max-w-xl', lg: 'max-w-3xl', xl: 'max-w-5xl' }
   return createPortal(
     <div className="fixed inset-0 z-[80]">
-      <div className="absolute inset-0 bg-brand-950/40 backdrop-blur-[2px] animate-fade-in" onClick={onClose} />
+      <div className="absolute inset-0 bg-forest-950/40 backdrop-blur-[2px] animate-fade-in" onClick={onClose} />
       <aside
         role="dialog"
         aria-modal="true"
@@ -189,7 +189,7 @@ export function Dropdown({
       {open && (
         <div
           className={cn(
-            'absolute top-[calc(100%+6px)] z-50 bg-surface border border-line rounded-xl shadow-lg py-1.5 animate-slide-down',
+            'absolute top-[calc(100%+8px)] z-50 bg-surface ring-1 ring-black/[0.06] rounded-2xl shadow-pop py-1.5 animate-slide-down',
             align === 'right' ? 'right-0' : 'left-0',
             width,
           )}
@@ -222,7 +222,7 @@ export function MenuItem({
       className={cn(
         'w-full flex items-center gap-2.5 px-3 py-1.5 text-[13px] text-left transition-colors',
         danger ? 'text-danger hover:bg-danger-soft' : 'text-ink-2 hover:bg-surface-sunken hover:text-ink',
-        active && 'text-brand-700 bg-brand-50',
+        active && 'text-forest-900 bg-lime-100 font-semibold',
       )}
     >
       {icon && <span className="text-ink-3 shrink-0">{icon}</span>}
@@ -260,7 +260,7 @@ export function Tooltip({
       <span
         role="tooltip"
         className={cn(
-          'pointer-events-none absolute z-[90] whitespace-nowrap rounded-md bg-brand-950 px-2 py-1 text-[11px] font-medium text-white',
+          'pointer-events-none absolute z-[90] whitespace-nowrap rounded-lg bg-forest-950 px-2.5 py-1.5 text-[11px] font-medium text-white shadow-lg',
           'opacity-0 group-hover/tt:opacity-100 transition-opacity duration-150 shadow-md',
           pos[side],
         )}
@@ -319,7 +319,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           {items.map((t) => (
             <div
               key={t.id}
-              className="bg-surface border border-line rounded-xl shadow-pop px-4 py-3 flex items-start gap-3 animate-toast-in"
+              className="bg-surface ring-1 ring-black/[0.06] rounded-2xl shadow-pop px-4 py-3 flex items-start gap-3 animate-toast-in"
             >
               <span className="mt-0.5 shrink-0">{TOAST_ICON[t.kind]}</span>
               <div className="min-w-0 flex-1">

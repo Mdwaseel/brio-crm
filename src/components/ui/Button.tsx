@@ -7,22 +7,23 @@ type Size = 'xs' | 'sm' | 'md' | 'lg'
 
 const VARIANTS: Record<Variant, string> = {
   primary:
-    'bg-brand-700 text-white border border-brand-700 hover:bg-brand-800 hover:border-brand-800 shadow-xs active:bg-brand-900',
+    'bg-forest-900 text-white border border-forest-900 hover:bg-forest-950 hover:border-forest-950 shadow-sm active:bg-forest-950',
   accent:
-    'bg-bronze-500 text-white border border-bronze-500 hover:bg-bronze-600 hover:border-bronze-600 shadow-xs',
+    'bg-lime-400 text-forest-950 border border-lime-400 hover:bg-lime-500 hover:border-lime-500 shadow-sm font-semibold',
   secondary:
     'bg-surface text-ink border border-line hover:bg-surface-muted hover:border-line-strong shadow-xs active:bg-surface-sunken',
-  outline: 'bg-transparent text-brand-700 border border-brand-200 hover:bg-brand-50',
-  subtle: 'bg-surface-sunken text-ink-2 border border-transparent hover:bg-brand-50 hover:text-brand-700',
+  outline: 'bg-transparent text-forest-800 border border-forest-200 hover:bg-forest-50',
+  subtle: 'bg-surface-sunken text-ink-2 border border-transparent hover:bg-lime-100 hover:text-forest-800',
   ghost: 'bg-transparent text-ink-2 border border-transparent hover:bg-surface-sunken hover:text-ink',
-  danger: 'bg-danger text-white border border-danger hover:bg-danger-ink shadow-xs',
+  danger: 'bg-danger text-white border border-danger hover:bg-danger-ink shadow-sm',
 }
 
+/* Pill geometry throughout — the defining shape of the system. */
 const SIZES: Record<Size, string> = {
-  xs: 'h-7 px-2.5 text-2xs gap-1.5 rounded-md',
-  sm: 'h-8 px-3 text-[13px] gap-1.5 rounded-lg',
-  md: 'h-9 px-3.5 text-[13px] gap-2 rounded-lg',
-  lg: 'h-10 px-4 text-sm gap-2 rounded-lg',
+  xs: 'h-7 px-3 text-2xs gap-1.5 rounded-full',
+  sm: 'h-8 px-3.5 text-[13px] gap-1.5 rounded-full',
+  md: 'h-10 px-4 text-[13px] gap-2 rounded-full',
+  lg: 'h-11 px-5 text-sm gap-2 rounded-full',
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -43,7 +44,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       className={cn(
         'inline-flex items-center justify-center font-medium whitespace-nowrap select-none',
         'transition-[background-color,border-color,color,box-shadow,transform] duration-150',
-        'active:scale-[.985] disabled:opacity-50 disabled:pointer-events-none',
+        'active:scale-[.98] disabled:opacity-50 disabled:pointer-events-none',
         VARIANTS[variant],
         SIZES[size],
         block && 'w-full',
@@ -61,13 +62,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
 export function IconButton({
   label, className, variant = 'ghost', size = 'md', children, ...rest
 }: ButtonProps & { label: string }) {
-  const box = size === 'sm' ? 'h-8 w-8' : size === 'xs' ? 'h-7 w-7' : 'h-9 w-9'
+  const box = size === 'sm' ? 'h-8 w-8' : size === 'xs' ? 'h-7 w-7' : 'h-10 w-10'
   return (
     <button
       aria-label={label}
       title={label}
       className={cn(
-        'inline-flex items-center justify-center rounded-lg transition-colors duration-150',
+        'inline-flex items-center justify-center rounded-full transition-colors duration-150',
         'disabled:opacity-50 disabled:pointer-events-none',
         VARIANTS[variant], box, className,
       )}

@@ -112,7 +112,7 @@ export function Intelligence() {
                 <ResponsiveContainer width="100%" height={300}>
                   <RadarChart data={COMPANY_AXES} outerRadius="75%">
                     <PolarGrid stroke={CHART.grid} />
-                    <PolarAngleAxis dataKey="axis" tick={{ fill: '#7c8b99', fontSize: 11 }} />
+                    <PolarAngleAxis dataKey="axis" tick={{ fill: '#86948b', fontSize: 11 }} />
                     <Radar name="Health" dataKey="value" stroke={CHART.brand} fill={CHART.brand} fillOpacity={0.18} strokeWidth={2} />
                     <RTooltip content={<ChartTooltip />} />
                   </RadarChart>
@@ -132,7 +132,7 @@ export function Intelligence() {
                     <CartesianGrid stroke={CHART.grid} vertical={false} />
                     <XAxis dataKey="department" {...AXIS_PROPS} />
                     <YAxis {...AXIS_PROPS} domain={[0, 100]} width={40} />
-                    <RTooltip content={<ChartTooltip formatter={(v) => `${v}`} />} cursor={{ fill: 'rgba(35,74,103,.05)' }} />
+                    <RTooltip content={<ChartTooltip formatter={(v) => `${v}`} />} cursor={{ fill: 'rgba(18,53,42,.05)' }} />
                     <Bar dataKey="performance" name="Performance" radius={[4, 4, 0, 0]} barSize={34}>
                       {departmentPerformance.map((d) => (
                         <Cell key={d.department} fill={d.performance >= d.target ? CHART.success : d.performance >= d.target - 8 ? CHART.warning : CHART.danger} />

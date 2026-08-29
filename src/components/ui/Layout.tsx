@@ -21,8 +21,8 @@ export function PageHeader({
       {breadcrumb && <div className="mb-2">{breadcrumb}</div>}
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
-          <h1 className="font-display text-[28px] leading-tight font-bold text-ink tracking-tight">{title}</h1>
-          {subtitle && <p className="text-[14px] text-ink-2 mt-1.5 max-w-3xl">{subtitle}</p>}
+          <h1 className="font-display text-[30px] leading-tight font-bold text-ink tracking-tight">{title}</h1>
+          {subtitle && <p className="text-[14px] text-ink-2 mt-2 max-w-3xl leading-relaxed">{subtitle}</p>}
           {meta && <div className="mt-3">{meta}</div>}
         </div>
         {actions && <div className="flex items-center gap-2 flex-wrap shrink-0">{actions}</div>}
@@ -45,9 +45,9 @@ export function SectionTitle({
   return (
     <div className="flex items-end justify-between gap-4 mb-3.5">
       <div className="flex items-start gap-2.5 min-w-0">
-        {icon && <span className="text-brand-600 mt-0.5">{icon}</span>}
+        {icon && <span className="h-9 w-9 rounded-full bg-lime-100 text-forest-800 inline-flex items-center justify-center shrink-0">{icon}</span>}
         <div className="min-w-0">
-          <h2 className="font-display text-[18px] font-semibold text-ink leading-tight">{title}</h2>
+          <h2 className="font-display text-[19px] font-bold text-ink leading-tight tracking-tight">{title}</h2>
           {subtitle && <p className="text-[13px] text-ink-2 mt-1">{subtitle}</p>}
         </div>
       </div>
@@ -73,15 +73,15 @@ export function Tabs({
 }) {
   if (variant === 'pill') {
     return (
-      <div className={cn('inline-flex items-center gap-1 p-1 bg-surface-sunken rounded-lg border border-line', className)}>
+      <div className={cn('inline-flex items-center gap-1 p-1 bg-surface-sunken rounded-full', className)}>
         {tabs.map((t) => (
           <button
             key={t.id}
             onClick={() => onChange(t.id)}
             aria-current={value === t.id}
             className={cn(
-              'inline-flex items-center gap-1.5 px-3 h-7 rounded-md text-[13px] font-medium transition-all duration-150',
-              value === t.id ? 'bg-surface text-ink shadow-xs' : 'text-ink-2 hover:text-ink',
+              'inline-flex items-center gap-1.5 px-3.5 h-8 rounded-full text-[13px] font-medium transition-all duration-150',
+              value === t.id ? 'bg-surface text-ink shadow-sm' : 'text-ink-2 hover:text-ink',
             )}
           >
             {t.icon}
@@ -103,7 +103,7 @@ export function Tabs({
             onClick={() => onChange(t.id)}
             className={cn(
               'relative inline-flex items-center gap-1.5 px-3 py-2.5 text-[13px] font-medium transition-colors duration-150',
-              value === t.id ? 'text-brand-700' : 'text-ink-2 hover:text-ink',
+              value === t.id ? 'text-forest-900' : 'text-ink-2 hover:text-ink',
             )}
           >
             {t.icon}
@@ -112,13 +112,13 @@ export function Tabs({
               <span
                 className={cn(
                   'num text-[10px] px-1.5 py-px rounded-full font-semibold',
-                  value === t.id ? 'bg-brand-100 text-brand-700' : 'bg-surface-sunken text-ink-3',
+                  value === t.id ? 'bg-lime-200 text-forest-900' : 'bg-surface-sunken text-ink-3',
                 )}
               >
                 {t.count}
               </span>
             )}
-            {value === t.id && <span className="absolute inset-x-2 -bottom-px h-0.5 bg-brand-700 rounded-full" />}
+            {value === t.id && <span className="absolute inset-x-2 -bottom-px h-[2.5px] bg-lime-500 rounded-full" />}
           </button>
         ))}
       </div>
@@ -136,15 +136,15 @@ export function Segmented({
   onChange: (v: string) => void
 }) {
   return (
-    <div className="inline-flex items-center p-0.5 bg-surface-sunken border border-line rounded-lg">
+    <div className="inline-flex items-center p-1 bg-surface-sunken rounded-full">
       {options.map((o) => (
         <button
           key={o.id}
           onClick={() => onChange(o.id)}
           title={o.label}
           className={cn(
-            'inline-flex items-center gap-1.5 h-7 px-2.5 rounded-md text-[12px] font-medium transition-all duration-150',
-            value === o.id ? 'bg-surface text-ink shadow-xs' : 'text-ink-2 hover:text-ink',
+            'inline-flex items-center gap-1.5 h-7 px-3 rounded-full text-[12px] font-medium transition-all duration-150',
+            value === o.id ? 'bg-surface text-ink shadow-sm' : 'text-ink-2 hover:text-ink',
           )}
         >
           {o.icon}
@@ -173,11 +173,11 @@ export function Progress({
   const resolved =
     tone === 'auto' ? (value >= 75 ? 'success' : value >= 50 ? 'brand' : value >= 30 ? 'warning' : 'danger') : tone
   const bars = {
-    brand: 'bg-brand-600',
-    success: 'bg-success',
+    brand: 'bg-forest-800',
+    success: 'bg-lime-500',
     warning: 'bg-warning',
     danger: 'bg-danger',
-    bronze: 'bg-bronze-500',
+    bronze: 'bg-lime-400',
   }
   const heights = { xs: 'h-1', sm: 'h-1.5', md: 'h-2' }
   return (
@@ -216,7 +216,7 @@ export function ScoreRing({
   tone?: 'brand' | 'success' | 'warning' | 'danger'
 }) {
   const resolved = tone ?? (value >= 80 ? 'success' : value >= 60 ? 'brand' : value >= 40 ? 'warning' : 'danger')
-  const colors = { brand: '#2e5a79', success: '#12805c', warning: '#b46a06', danger: '#c02b26' }
+  const colors = { brand: '#184533', success: '#8fd13f', warning: '#b4770a', danger: '#d63f3f' }
   const stroke = size >= 60 ? 6 : 5
   const r = (size - stroke) / 2
   const c = 2 * Math.PI * r
@@ -265,7 +265,7 @@ export function EmptyState({
   return (
     <div className={cn('flex flex-col items-center justify-center text-center', compact ? 'py-10 px-6' : 'py-16 px-6')}>
       {icon && (
-        <div className="h-11 w-11 rounded-xl bg-surface-sunken border border-line flex items-center justify-center text-ink-3 mb-3.5">
+        <div className="h-12 w-12 rounded-2xl bg-surface-sunken flex items-center justify-center text-ink-3 mb-3.5">
           {icon}
         </div>
       )}
@@ -290,12 +290,12 @@ export type TimelineItem = {
 
 export function Timeline({ items, dense }: { items: TimelineItem[]; dense?: boolean }) {
   const dots = {
-    brand: 'bg-brand-600 text-white',
+    brand: 'bg-forest-800 text-white',
     success: 'bg-success text-white',
     warning: 'bg-warning text-white',
     danger: 'bg-danger text-white',
     info: 'bg-info text-white',
-    bronze: 'bg-bronze-500 text-white',
+    bronze: 'bg-lime-500 text-forest-950',
     neutral: 'bg-surface-sunken text-ink-3 border border-line',
   }
   return (
@@ -347,7 +347,7 @@ export function Alert({
     success: 'bg-success-soft border-success/20 text-success-ink',
     warning: 'bg-warning-soft border-warning/20 text-warning-ink',
     danger: 'bg-danger-soft border-danger/20 text-danger-ink',
-    brand: 'bg-brand-50 border-brand-200 text-brand-800',
+    brand: 'bg-lime-50 border-lime-200 text-forest-800',
   }
   return (
     <div className={cn('border rounded-xl px-4 py-3 flex items-start gap-3', tones[tone])}>

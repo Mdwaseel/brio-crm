@@ -85,10 +85,10 @@ export function DataTable<T extends { id: string }>({
   return (
     <div className="relative">
       {selectable && selected.size > 0 && bulkActions && (
-        <div className="absolute -top-px inset-x-0 z-20 flex items-center justify-between gap-4 bg-brand-700 text-white rounded-t-xl px-4 py-2.5 animate-slide-down">
+        <div className="absolute -top-px inset-x-0 z-20 flex items-center justify-between gap-4 bg-forest-900 text-white rounded-t-2xl px-4 py-2.5 animate-slide-down">
           <span className="text-[13px] font-medium num">
             {selected.size} selected
-            <button onClick={clear} className="ml-3 text-brand-200 hover:text-white underline underline-offset-2 text-2xs">
+            <button onClick={clear} className="ml-3 text-lime-300 hover:text-white underline underline-offset-2 text-2xs">
               Clear
             </button>
           </span>
@@ -131,7 +131,7 @@ export function DataTable<T extends { id: string }>({
                       className={cn(
                         'inline-flex items-center gap-1 hover:text-ink transition-colors group',
                         c.align === 'right' && 'flex-row-reverse',
-                        sort?.key === c.key && 'text-brand-700',
+                        sort?.key === c.key && 'text-forest-900',
                       )}
                     >
                       {c.header}
@@ -155,8 +155,8 @@ export function DataTable<T extends { id: string }>({
                 onClick={onRowClick ? () => onRowClick(row) : undefined}
                 className={cn(
                   'border-b border-line last:border-0 transition-colors duration-100',
-                  onRowClick && 'cursor-pointer hover:bg-brand-50/45',
-                  selected.has(row.id) && 'bg-brand-50/70',
+                  onRowClick && 'cursor-pointer hover:bg-lime-50/60',
+                  selected.has(row.id) && 'bg-lime-50',
                   rowClassName?.(row),
                 )}
               >
@@ -207,7 +207,7 @@ export function DataTable<T extends { id: string }>({
               aria-label="Previous page"
               disabled={safePage === 0}
               onClick={() => setPage(safePage - 1)}
-              className="h-7 w-7 inline-flex items-center justify-center rounded-md border border-line text-ink-2 hover:bg-surface-sunken disabled:opacity-40 disabled:pointer-events-none transition-colors"
+              className="h-8 w-8 inline-flex items-center justify-center rounded-full border border-line text-ink-2 hover:bg-surface-sunken disabled:opacity-40 disabled:pointer-events-none transition-colors"
             >
               <ChevronLeft size={14} />
             </button>
@@ -216,8 +216,8 @@ export function DataTable<T extends { id: string }>({
                 key={i}
                 onClick={() => setPage(i)}
                 className={cn(
-                  'h-7 min-w-7 px-2 inline-flex items-center justify-center rounded-md text-2xs font-medium num transition-colors',
-                  i === safePage ? 'bg-brand-700 text-white' : 'text-ink-2 hover:bg-surface-sunken border border-line',
+                  'h-8 min-w-8 px-2.5 inline-flex items-center justify-center rounded-full text-2xs font-medium num transition-colors',
+                  i === safePage ? 'bg-forest-900 text-white' : 'text-ink-2 hover:bg-surface-sunken border border-line',
                 )}
               >
                 {i + 1}
@@ -228,7 +228,7 @@ export function DataTable<T extends { id: string }>({
               aria-label="Next page"
               disabled={safePage >= pageCount - 1}
               onClick={() => setPage(safePage + 1)}
-              className="h-7 w-7 inline-flex items-center justify-center rounded-md border border-line text-ink-2 hover:bg-surface-sunken disabled:opacity-40 disabled:pointer-events-none transition-colors"
+              className="h-8 w-8 inline-flex items-center justify-center rounded-full border border-line text-ink-2 hover:bg-surface-sunken disabled:opacity-40 disabled:pointer-events-none transition-colors"
             >
               <ChevronRight size={14} />
             </button>

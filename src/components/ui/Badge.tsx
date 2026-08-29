@@ -6,8 +6,8 @@ export type Tone = 'neutral' | 'brand' | 'success' | 'warning' | 'danger' | 'inf
 const TONES: Record<Tone, string> = {
   neutral: 'bg-surface-sunken text-ink-2 border-line',
   slate: 'bg-slate-100 text-slate-700 border-slate-200',
-  brand: 'bg-brand-50 text-brand-700 border-brand-100',
-  bronze: 'bg-bronze-50 text-bronze-700 border-bronze-100',
+  brand: 'bg-forest-50 text-forest-800 border-forest-100',
+  bronze: 'bg-lime-100 text-lime-800 border-lime-200',
   success: 'bg-success-soft text-success-ink border-success/15',
   warning: 'bg-warning-soft text-warning-ink border-warning/15',
   danger: 'bg-danger-soft text-danger-ink border-danger/15',
@@ -15,7 +15,7 @@ const TONES: Record<Tone, string> = {
 }
 
 const DOTS: Record<Tone, string> = {
-  neutral: 'bg-ink-3', slate: 'bg-slate-400', brand: 'bg-brand-600', bronze: 'bg-bronze-500',
+  neutral: 'bg-ink-3', slate: 'bg-slate-400', brand: 'bg-forest-700', bronze: 'bg-lime-500',
   success: 'bg-success', warning: 'bg-warning', danger: 'bg-danger', info: 'bg-info',
 }
 
@@ -25,8 +25,8 @@ export function Badge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 border rounded-md font-medium whitespace-nowrap',
-        size === 'xs' ? 'px-1.5 py-0.5 text-[10px]' : 'px-2 py-[3px] text-2xs',
+        'inline-flex items-center gap-1.5 border rounded-full font-medium whitespace-nowrap',
+        size === 'xs' ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-[3px] text-2xs',
         TONES[tone], className,
       )}
     >
@@ -68,11 +68,11 @@ export function Trend({ value, suffix = '%', invert = false }: { value: number; 
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-0.5 text-2xs font-semibold num',
-        good ? 'text-success' : 'text-danger',
+        'inline-flex items-center gap-0.5 rounded-full px-1.5 py-[2px] text-[10px] font-semibold num',
+        good ? 'bg-lime-100 text-lime-800' : 'bg-danger-soft text-danger-ink',
       )}
     >
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden
         className={up ? '' : 'rotate-180'}>
         <path d="m5 15 7-7 7 7" />
       </svg>

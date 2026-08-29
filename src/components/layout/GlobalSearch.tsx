@@ -78,8 +78,8 @@ export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => 
 
   return createPortal(
     <div className="fixed inset-0 z-[90] flex items-start justify-center pt-[10vh] px-4">
-      <div className="fixed inset-0 bg-brand-950/50 backdrop-blur-[3px] animate-fade-in" onClick={onClose} />
-      <div className="relative w-full max-w-2xl bg-surface rounded-2xl shadow-pop border border-line overflow-hidden animate-scale-in">
+      <div className="fixed inset-0 bg-forest-950/50 backdrop-blur-[3px] animate-fade-in" onClick={onClose} />
+      <div className="relative w-full max-w-2xl bg-surface rounded-3xl shadow-pop overflow-hidden animate-scale-in">
         <div className="flex items-center gap-3 px-4 h-14 border-b border-line">
           <Search size={18} className="text-ink-3 shrink-0" />
           <input
@@ -117,11 +117,11 @@ export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => 
                     onClick={() => { navigate(r.to); onClose() }}
                     className={cn(
                       'w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors',
-                      active ? 'bg-brand-50' : 'hover:bg-surface-muted',
+                      active ? 'bg-lime-100' : 'hover:bg-surface-muted',
                     )}
                   >
-                    <span className={cn('h-7 w-7 rounded-lg inline-flex items-center justify-center shrink-0',
-                      active ? 'bg-brand-100 text-brand-700' : 'bg-surface-sunken text-ink-3')}>
+                    <span className={cn('h-8 w-8 rounded-full inline-flex items-center justify-center shrink-0',
+                      active ? 'bg-forest-900 text-lime-300' : 'bg-surface-sunken text-ink-3')}>
                       <Icon size={14} />
                     </span>
                     <span className="min-w-0 flex-1">
