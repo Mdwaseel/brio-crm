@@ -2,7 +2,7 @@ import type { Employee } from '@/types'
 
 export const employees: Employee[] = [
   {
-    id: 'EMP-01', name: 'Priya Sharma', department: 'Sales', role: 'Senior Account Director', manager: 'Arjun Mehta',
+    id: 'EMP-01', name: 'Priya Sharma', department: 'Sales', role: 'Senior Account Director', manager: 'Venkatesh Jagabathina',
     email: 'priya.sharma@brio.in', phone: '+91 98200 11001', location: 'Mumbai', joined: '2021-03-15',
     goalProgress: 88, performance: 94, health: 91, workload: 72, engagement: 93, csat: 4.6, status: 'Active', openTasks: 12,
     goals: [
@@ -21,7 +21,7 @@ export const employees: Employee[] = [
     ],
   },
   {
-    id: 'EMP-03', name: 'Vikram Rao', department: 'Projects', role: 'Project Manager', manager: 'Arjun Mehta',
+    id: 'EMP-03', name: 'Vikram Rao', department: 'Projects', role: 'Project Manager', manager: 'Venkatesh Jagabathina',
     email: 'vikram.rao@brio.in', phone: '+91 98450 11003', location: 'Hyderabad', joined: '2020-01-20',
     goalProgress: 62, performance: 76, health: 64, workload: 96, engagement: 68, csat: 3.9, status: 'Active', openTasks: 27,
     goals: [
@@ -58,7 +58,7 @@ export const employees: Employee[] = [
     ],
   },
   {
-    id: 'EMP-07', name: 'Meera Nair', department: 'Service', role: 'Head of Service', manager: 'Arjun Mehta',
+    id: 'EMP-07', name: 'Meera Nair', department: 'Service', role: 'Head of Service', manager: 'Venkatesh Jagabathina',
     email: 'meera.nair@brio.in', phone: '+91 90040 11007', location: 'Chennai', joined: '2019-06-10',
     goalProgress: 74, performance: 88, health: 79, workload: 81, engagement: 84, csat: 4.3, status: 'Active', openTasks: 16,
     goals: [
@@ -67,7 +67,7 @@ export const employees: Employee[] = [
     ],
   },
   {
-    id: 'EMP-08', name: 'Deepak Iyer', department: 'Operations', role: 'Supply Chain Lead', manager: 'Arjun Mehta',
+    id: 'EMP-08', name: 'Deepak Iyer', department: 'Operations', role: 'Supply Chain Lead', manager: 'Venkatesh Jagabathina',
     email: 'deepak.iyer@brio.in', phone: '+91 98200 11008', location: 'Mumbai', joined: '2020-09-01',
     goalProgress: 83, performance: 85, health: 84, workload: 68, engagement: 87, csat: 4.2, status: 'Active', openTasks: 9,
     goals: [
@@ -82,7 +82,7 @@ export const employees: Employee[] = [
     goals: [{ id: 'G19', title: 'Site mobilisation within 15 days of PO', progress: 70, due: '2026-11-30' }],
   },
   {
-    id: 'EMP-10', name: 'Sneha Pillai', department: 'Finance', role: 'Finance Manager', manager: 'Arjun Mehta',
+    id: 'EMP-10', name: 'Sneha Pillai', department: 'Finance', role: 'Finance Manager', manager: 'Venkatesh Jagabathina',
     email: 'sneha.pillai@brio.in', phone: '+91 94470 11010', location: 'Kochi', joined: '2021-01-11',
     goalProgress: 86, performance: 90, health: 88, workload: 62, engagement: 89, csat: 4.5, status: 'Active', openTasks: 7,
     goals: [

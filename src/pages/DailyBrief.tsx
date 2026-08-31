@@ -42,7 +42,7 @@ export function DailyBrief() {
         meta={
           <div className="flex items-center gap-2 flex-wrap">
             <Badge tone="brand" dot>Generated 09:00 IST</Badge>
-            <Badge tone="neutral">Arjun Mehta · Super Admin</Badge>
+            <Badge tone="neutral">Venkatesh Jagabathina · Super Admin</Badge>
           </div>
         }
         actions={

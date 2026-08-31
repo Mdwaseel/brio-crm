@@ -183,7 +183,7 @@ export function Assistant() {
                 <div className="rounded-2xl rounded-tr-md bg-brand-700 text-white px-4 py-3">
                   <p className="text-[14px] leading-relaxed">{m.text}</p>
                 </div>
-                <Avatar name="Arjun Mehta" size="md" />
+                <Avatar name="Venkatesh Jagabathina" size="md" />
               </div>
             </div>
           ) : (

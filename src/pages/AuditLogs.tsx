@@ -12,7 +12,7 @@ const EXTENDED = [
   ...auditLogs,
   { id: 'AU-9', actor: 'Kiran Das', action: 'Updated ticket status', target: 'TKT-1052 — Skyline Group', module: 'Service', ip: '49.207.11.240', time: '2026-08-21T11:15:00+05:30' },
   { id: 'AU-10', actor: 'Anita Roy', action: 'Created quotation', target: 'QT-3044 — Metro Living', module: 'Quotations', ip: '117.216.9.32', time: '2026-08-20T14:22:00+05:30' },
-  { id: 'AU-11', actor: 'Arjun Mehta', action: 'Signed in', target: 'Web · Chrome on Windows', module: 'Security', ip: '103.21.58.14', time: '2026-08-20T08:55:00+05:30' },
+  { id: 'AU-11', actor: 'Venkatesh Jagabathina', action: 'Signed in', target: 'Web · Chrome on Windows', module: 'Security', ip: '103.21.58.14', time: '2026-08-20T08:55:00+05:30' },
   { id: 'AU-12', actor: 'System', action: 'Executed workflow', target: 'WF-06 — Employee feedback pulse', module: 'Automation', ip: '—', time: '2026-08-15T10:00:00+05:30' },
   { id: 'AU-13', actor: 'Meera Nair', action: 'Reassigned engineer', target: 'TKT-1049 — Vertex Infra', module: 'Service', ip: '117.96.44.9', time: '2026-08-21T12:40:00+05:30' },
   { id: 'AU-14', actor: 'Tanvi Desai', action: 'Adjusted stock', target: 'ESC-HDC-02 — Handrail drive chain', module: 'Inventory', ip: '106.51.77.19', time: '2026-08-21T09:05:00+05:30' },

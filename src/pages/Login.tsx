@@ -12,7 +12,7 @@ const PILLARS = [
 const FLOW = ['Data', 'KPI', 'Insight', 'Risk', 'Recommendation', 'Automation', 'Result']
 
 export function Login({ onSignIn }: { onSignIn: () => void }) {
-  const [email, setEmail] = useState('arjun.mehta@brio.in')
+  const [email, setEmail] = useState('venkatesh@brioelevators.com')
   const [password, setPassword] = useState('demo-access')
   const [loading, setLoading] = useState(false)
   const { demo } = useToast()

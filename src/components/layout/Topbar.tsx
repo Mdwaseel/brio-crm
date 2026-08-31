@@ -236,15 +236,15 @@ export function Topbar({
               className="h-10 w-10 rounded-full bg-forest-900 text-lime-300 text-[12px] font-bold inline-flex items-center justify-center ring-2 ring-surface hover:ring-lime-300 transition-colors shadow-xs"
               aria-label="Account menu"
             >
-              AM
+              VJ
             </button>
           )}
         >
           {(close) => (
             <>
               <div className="px-4 py-3">
-                <p className="text-[13px] font-semibold text-ink">Arjun Mehta</p>
-                <p className="text-2xs text-ink-3">arjun.mehta@brio.in</p>
+                <p className="text-[13px] font-semibold text-ink">Venkatesh Jagabathina</p>
+                <p className="text-2xs text-ink-3">venkatesh@brioelevators.com</p>
                 <Badge tone="bronze" className="mt-2">Super Admin · Full access</Badge>
               </div>
               <MenuItem icon={<User size={14} />} onClick={() => { close(); demo('Opening profile') }}>Profile</MenuItem>

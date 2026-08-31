@@ -185,7 +185,7 @@ export const workflows: Workflow[] = [
     when: 'Every Monday at 08:00 IST',
     conditions: ['Recipient is a department head or above'],
     actions: ['Compile department scorecards', 'Attach risk register', 'Email to leadership group'],
-    active: true, runs30d: 4, lastRun: '2026-08-17T08:00:00+05:30', owner: 'Arjun Mehta',
+    active: true, runs30d: 4, lastRun: '2026-08-17T08:00:00+05:30', owner: 'Venkatesh Jagabathina',
   },
   {
     id: 'WF-06', name: 'Employee feedback pulse', category: 'People',
@@ -206,7 +206,7 @@ export const workflows: Workflow[] = [
     when: 'Quotation is submitted for approval',
     conditions: ['Discount is greater than 8%'],
     actions: ['Route to Sales Head for approval', 'Lock quotation from editing', 'Log approval in audit trail'],
-    active: false, runs30d: 0, lastRun: '2026-07-30T15:10:00+05:30', owner: 'Arjun Mehta',
+    active: false, runs30d: 0, lastRun: '2026-07-30T15:10:00+05:30', owner: 'Venkatesh Jagabathina',
   },
 ]
 
@@ -220,7 +220,7 @@ export const notifications: Notification[] = [
 ]
 
 export const auditLogs = [
-  { id: 'AU-1', actor: 'Arjun Mehta', action: 'Updated role permissions', target: 'Role: Service Engineer', module: 'Users & Roles', ip: '103.21.58.14', time: '2026-08-21T15:40:00+05:30' },
+  { id: 'AU-1', actor: 'Venkatesh Jagabathina', action: 'Updated role permissions', target: 'Role: Service Engineer', module: 'Users & Roles', ip: '103.21.58.14', time: '2026-08-21T15:40:00+05:30' },
   { id: 'AU-2', actor: 'Priya Sharma', action: 'Approved quotation', target: 'QT-3043 — Prime Estates', module: 'Quotations', ip: '49.36.180.72', time: '2026-08-21T14:05:00+05:30' },
   { id: 'AU-3', actor: 'Meera Nair', action: 'Escalated ticket', target: 'TKT-1048 — Crescent Mall', module: 'Service', ip: '117.96.44.9', time: '2026-08-21T13:05:00+05:30' },
   { id: 'AU-4', actor: 'Deepak Iyer', action: 'Raised purchase order', target: 'PO-8842 — Sterling Drives', module: 'Inventory', ip: '103.21.58.61', time: '2026-08-21T11:20:00+05:30' },
@@ -243,12 +243,12 @@ export const reports = [
   { id: 'RP-8', name: 'Project Performance', category: 'Projects', description: 'Schedule variance, budget burn and milestone slippage across the portfolio.', updated: '2026-08-21', views: 187, owner: 'Vikram Rao', format: 'Chart + Table' },
   { id: 'RP-9', name: 'Inventory Health', category: 'Inventory', description: 'Stock coverage, critical SKUs, ageing inventory and warehouse utilisation.', updated: '2026-08-21', views: 112, owner: 'Deepak Iyer', format: 'Scorecard' },
   { id: 'RP-10', name: 'Purchase Order Cycle', category: 'Inventory', description: 'PO ageing, supplier lead time performance and receipt accuracy.', updated: '2026-08-18', views: 76, owner: 'Tanvi Desai', format: 'Table' },
-  { id: 'RP-11', name: 'Employee Performance', category: 'Employees', description: 'Goal attainment, performance distribution and manager-rated capability.', updated: '2026-08-20', views: 203, owner: 'Arjun Mehta', format: 'Scorecard' },
+  { id: 'RP-11', name: 'Employee Performance', category: 'Employees', description: 'Goal attainment, performance distribution and manager-rated capability.', updated: '2026-08-20', views: 203, owner: 'Venkatesh Jagabathina', format: 'Scorecard' },
   { id: 'RP-12', name: 'Feedback Insights', category: 'Employees', description: 'Pulse themes, sentiment movement and anonymised commentary clusters.', updated: '2026-08-21', views: 158, owner: 'Meera Nair', format: 'Chart' },
   { id: 'RP-13', name: 'Receivables Ageing', category: 'Finance', description: 'Outstanding invoices by ageing bucket, customer and collection owner.', updated: '2026-08-21', views: 149, owner: 'Sneha Pillai', format: 'Table' },
   { id: 'RP-14', name: 'GST Summary', category: 'Finance', description: 'Output and input tax summary with reconciliation exceptions.', updated: '2026-08-19', views: 84, owner: 'Farah Sheikh', format: 'Table' },
-  { id: 'RP-15', name: 'Company Health Scorecard', category: 'Management', description: 'Cross-functional health across performance, workload, risk and engagement.', updated: '2026-08-21', views: 264, owner: 'Arjun Mehta', format: 'Scorecard' },
-  { id: 'RP-16', name: 'Risk Register', category: 'Management', description: 'Consolidated operational, delivery and commercial risks with owners.', updated: '2026-08-21', views: 121, owner: 'Arjun Mehta', format: 'Table' },
+  { id: 'RP-15', name: 'Company Health Scorecard', category: 'Management', description: 'Cross-functional health across performance, workload, risk and engagement.', updated: '2026-08-21', views: 264, owner: 'Venkatesh Jagabathina', format: 'Scorecard' },
+  { id: 'RP-16', name: 'Risk Register', category: 'Management', description: 'Consolidated operational, delivery and commercial risks with owners.', updated: '2026-08-21', views: 121, owner: 'Venkatesh Jagabathina', format: 'Table' },
 ]
 
 export const invoices = [

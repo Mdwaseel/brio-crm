@@ -98,10 +98,10 @@ export function Sidebar({
             )}
           >
             <span className="h-9 w-9 rounded-full bg-forest-900 text-lime-300 text-[12px] font-bold inline-flex items-center justify-center shrink-0">
-              AM
+              VJ
             </span>
             <span className={cn('flex-1 min-w-0', collapsed && 'lg:hidden')}>
-              <span className="block text-[13px] font-semibold text-ink truncate leading-tight">Arjun Mehta</span>
+              <span className="block text-[13px] font-semibold text-ink truncate leading-tight">Venkatesh Jagabathina</span>
               <span className="block text-2xs text-ink-3 truncate mt-0.5">Super Admin</span>
             </span>
             <ChevronsUpDown size={14} className={cn('text-ink-3 shrink-0', collapsed && 'lg:hidden')} />

@@ -52,7 +52,7 @@ type Row = {
 }
 
 const USERS: Row[] = [
-  { id: 'U-01', name: 'Arjun Mehta', email: 'arjun.mehta@brio.in', role: 'Super Admin', department: 'Leadership', status: 'Active', lastActive: '2026-08-22T09:12:00+05:30' },
+  { id: 'U-01', name: 'Venkatesh Jagabathina', email: 'venkatesh@brioelevators.com', role: 'Super Admin', department: 'Leadership', status: 'Active', lastActive: '2026-08-22T09:12:00+05:30' },
   ...employees.slice(0, 12).map((e, i) => ({
     id: `U-${String(i + 2).padStart(2, '0')}`,
     name: e.name,
@@ -182,7 +182,7 @@ export function UsersRoles() {
           <>
             <div className="p-5 border-b border-line">
               <Alert tone="brand" icon={<Crown size={16} />} title="Super Admin has unrestricted access">
-                Arjun Mehta can view and edit every department, employee, customer, pipeline, report and setting
+                Venkatesh Jagabathina can view and edit every department, employee, customer, pipeline, report and setting
                 in this workspace. All other roles are scoped to the permissions below.
               </Alert>
             </div>
@@ -271,7 +271,7 @@ export function UsersRoles() {
       </Modal>
 
       <p className="mt-4 text-2xs text-ink-3">
-        Role changes are written to the audit log. Last permission change: 21 Aug 2026 by Arjun Mehta ·{' '}
+        Role changes are written to the audit log. Last permission change: 21 Aug 2026 by Venkatesh Jagabathina ·{' '}
         <Link to="/settings/audit" className="text-brand-700 hover:underline font-medium">view audit logs</Link>.
         Workspace created {fmtDate('2021-04-01')}.
       </p>
