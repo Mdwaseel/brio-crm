@@ -251,7 +251,7 @@ export function UsersRoles() {
         }
       >
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="sm:col-span-2"><Label htmlFor="iv-email">Work email</Label><Input id="iv-email" type="email" placeholder="name@brio.in" icon={<Mail size={14} />} /></div>
+          <div className="sm:col-span-2"><Label htmlFor="iv-email">Work email</Label><Input id="iv-email" type="email" placeholder="name@brioelevators.com" icon={<Mail size={14} />} /></div>
           <div><Label htmlFor="iv-name">Full name</Label><Input id="iv-name" placeholder="e.g. Meera Nair" /></div>
           <div>
             <Label htmlFor="iv-dept">Department</Label>

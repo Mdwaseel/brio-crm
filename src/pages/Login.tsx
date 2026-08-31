@@ -112,7 +112,7 @@ export function Login({ onSignIn }: { onSignIn: () => void }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 icon={<Mail size={15} />}
-                placeholder="you@company.in"
+                placeholder="venkatesh@brioelevators.com"
                 required
               />
             </div>
