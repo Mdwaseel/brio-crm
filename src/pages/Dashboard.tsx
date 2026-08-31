@@ -183,7 +183,7 @@ export function Dashboard() {
             </p>
             <button
               onClick={() => navigate('/intelligence')}
-              className="mt-3 text-2xs font-semibold text-forest-800 hover:underline inline-flex items-center gap-1 self-start"
+              className="mt-3 text-2xs font-semibold text-accent hover:underline inline-flex items-center gap-1 self-start"
             >
               See what changed <ArrowRight size={11} />
             </button>
@@ -247,7 +247,7 @@ export function Dashboard() {
             <span className="text-2xs text-ink-2">
               August billed <span className="font-semibold text-ink num">₹48.6L</span> — the narrowest gap to target in six months.
             </span>
-            <button onClick={() => navigate('/reports')} className="text-2xs font-semibold text-forest-800 hover:underline inline-flex items-center gap-1">
+            <button onClick={() => navigate('/reports')} className="text-2xs font-semibold text-accent hover:underline inline-flex items-center gap-1">
               Revenue report <ArrowRight size={11} />
             </button>
           </div>
@@ -520,7 +520,7 @@ export function Dashboard() {
             <span className="text-2xs text-ink-2">
               Workload has risen for four consecutive months — engagement is holding but health gains are flattening.
             </span>
-            <button onClick={() => navigate('/feedback')} className="text-2xs font-semibold text-forest-800 hover:underline inline-flex items-center gap-1 shrink-0">
+            <button onClick={() => navigate('/feedback')} className="text-2xs font-semibold text-accent hover:underline inline-flex items-center gap-1 shrink-0">
               Feedback intelligence <ArrowRight size={11} />
             </button>
           </div>

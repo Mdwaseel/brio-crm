@@ -4,7 +4,7 @@ import { Trend } from './Badge'
 
 /** Base surface: soft 20px radius, hairline ring instead of a hard border. */
 export function Card({ children, className, as: As = 'div' }: { children: ReactNode; className?: string; as?: 'div' | 'section' }) {
-  return <As className={cn('bg-surface rounded-2xl shadow-xs ring-1 ring-black/[0.04]', className)}>{children}</As>
+  return <As className={cn('bg-surface rounded-2xl shadow-xs ring-1 ring-[color:var(--ring-hairline)]', className)}>{children}</As>
 }
 
 export function CardHeader({
@@ -59,7 +59,7 @@ export function KpiCard({
     <Wrapper
       onClick={onClick}
       className={cn(
-        'bg-surface rounded-2xl p-5 text-left w-full shadow-xs ring-1 ring-black/[0.04]',
+        'bg-surface rounded-2xl p-5 text-left w-full shadow-xs ring-1 ring-[color:var(--ring-hairline)]',
         'transition-[box-shadow,transform] duration-200',
         onClick && 'hover:shadow-lift hover:-translate-y-0.5 cursor-pointer',
       )}
@@ -87,7 +87,7 @@ export function MiniKpi({
 }: { label: string; value: string; tone?: 'neutral' | 'success' | 'warning' | 'danger'; icon?: ReactNode; sub?: string }) {
   const tones = { neutral: 'text-ink', success: 'text-success', warning: 'text-warning', danger: 'text-danger' }
   return (
-    <div className="bg-surface rounded-2xl px-4 py-4 shadow-xs ring-1 ring-black/[0.04] hover:shadow-sm transition-shadow">
+    <div className="bg-surface rounded-2xl px-4 py-4 shadow-xs ring-1 ring-[color:var(--ring-hairline)] hover:shadow-sm transition-shadow">
       <div className="flex items-center gap-2 text-ink-3">
         {icon && <span className="h-6 w-6 rounded-full bg-forest-50 text-forest-700 inline-flex items-center justify-center shrink-0">{icon}</span>}
         <span className="text-2xs font-medium">{label}</span>
@@ -110,13 +110,13 @@ export function StatTile({
     <Wrapper
       onClick={onClick}
       className={cn(
-        'rounded-xl bg-surface-muted/70 ring-1 ring-black/[0.03] px-3.5 py-3.5 text-left w-full',
-        onClick && 'hover:bg-lime-50 hover:ring-lime-200 transition-colors cursor-pointer',
+        'rounded-xl bg-surface-muted/70 ring-1 ring-[color:var(--ring-hairline)] px-3.5 py-3.5 text-left w-full',
+        onClick && 'hover:bg-lime-50 hover:ring-lime-200 dark:hover:bg-lime-400/10 dark:hover:ring-lime-400/30 transition-colors cursor-pointer',
       )}
     >
       <div className="flex items-center gap-2">
         {icon && (
-          <span className="h-6 w-6 rounded-lg bg-surface ring-1 ring-black/[0.04] text-forest-700 inline-flex items-center justify-center shrink-0">
+          <span className="h-6 w-6 rounded-lg bg-surface ring-1 ring-[color:var(--ring-hairline)] text-forest-700 inline-flex items-center justify-center shrink-0">
             {icon}
           </span>
         )}

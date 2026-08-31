@@ -41,7 +41,7 @@ export function AlertCard({ alert }: { alert: AlertType }) {
   return (
     <article
       className={cn(
-        'relative bg-surface ring-1 ring-black/[0.04] rounded-2xl overflow-hidden shadow-xs flex flex-col',
+        'relative bg-surface ring-1 ring-[color:var(--ring-hairline)] rounded-2xl overflow-hidden shadow-xs flex flex-col',
         'transition-[box-shadow,transform] duration-200 hover:shadow-lift hover:-translate-y-0.5',
       )}
     >

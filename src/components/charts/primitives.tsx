@@ -43,7 +43,7 @@ export function ChartTooltip({
 }) {
   if (!active || !payload?.length) return null
   return (
-    <div className="bg-surface rounded-xl shadow-lg ring-1 ring-black/[0.06] px-3.5 py-3 min-w-[158px]">
+    <div className="bg-surface rounded-xl shadow-lg ring-1 ring-[color:var(--ring-hairline)] px-3.5 py-3 min-w-[158px]">
       {label !== undefined && (
         <p className="text-2xs font-semibold text-ink-3 uppercase tracking-wide mb-1.5">
           {label}

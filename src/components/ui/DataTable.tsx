@@ -85,7 +85,7 @@ export function DataTable<T extends { id: string }>({
   return (
     <div className="relative">
       {selectable && selected.size > 0 && bulkActions && (
-        <div className="absolute -top-px inset-x-0 z-20 flex items-center justify-between gap-4 bg-forest-900 text-white rounded-t-2xl px-4 py-2.5 animate-slide-down">
+        <div className="absolute -top-px inset-x-0 z-20 flex items-center justify-between gap-4 bg-forest-900 dark:bg-forest-700 text-white rounded-t-2xl px-4 py-2.5 animate-slide-down">
           <span className="text-[13px] font-medium num">
             {selected.size} selected
             <button onClick={clear} className="ml-3 text-lime-300 hover:text-white underline underline-offset-2 text-2xs">
@@ -155,7 +155,7 @@ export function DataTable<T extends { id: string }>({
                 onClick={onRowClick ? () => onRowClick(row) : undefined}
                 className={cn(
                   'border-b border-line last:border-0 transition-colors duration-100',
-                  onRowClick && 'cursor-pointer hover:bg-lime-50/60',
+                  onRowClick && 'cursor-pointer hover:bg-lime-50/60 dark:hover:bg-lime-400/[0.07]',
                   selected.has(row.id) && 'bg-lime-50',
                   rowClassName?.(row),
                 )}
@@ -217,7 +217,7 @@ export function DataTable<T extends { id: string }>({
                 onClick={() => setPage(i)}
                 className={cn(
                   'h-8 min-w-8 px-2.5 inline-flex items-center justify-center rounded-full text-2xs font-medium num transition-colors',
-                  i === safePage ? 'bg-forest-900 text-white' : 'text-ink-2 hover:bg-surface-sunken border border-line',
+                  i === safePage ? 'bg-forest-900 dark:bg-forest-600 text-white' : 'text-ink-2 hover:bg-surface-sunken border border-line',
                 )}
               >
                 {i + 1}

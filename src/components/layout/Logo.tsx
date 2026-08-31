@@ -1,10 +1,89 @@
 import { cn } from '@/lib/utils'
 
-/**
- * Brio mark — the arrowhead motif from brio-logo.svg, set in a round
- * forest-green badge with a spring-green glyph.
+/*
+ * Artwork traced from brio-logo.svg. The source file hard-codes the original
+ * navy (#234a67) and bronze (#a47d57); here the two paths take explicit fills
+ * so the logo follows the forest/lime palette and inverts cleanly on dark.
+ *
+ * One path holds every letterform plus the tagline band, so each lockup is
+ * just a different viewBox over the same art — the rest is clipped away.
  */
-export function BrioMark({ size = 32, className, inverted }: { size?: number; className?: string; inverted?: boolean }) {
+const WORDMARK_PATH =
+  'm209.79 332.97c-5.94 0.63-44.48 1.03-99.25 1.03h-89.54v-312l84.25 0.02c98.13 0.02 104.22 0.41 128.75 8.2 31.91 10.14 52.01 30.65 57.59 58.76 1.99 10.01 1.46 26.92-1.14 36.48-4.52 16.63-14.41 31.29-27.76 41.16l-5.8 4.3 7.81 3.93c19.6 9.86 32.38 24.5 39.4 45.16 2.9 8.54 3.27 10.94 3.67 23.99 0.52 17-1.45 27.65-7.31 39.5-13.66 27.65-44.66 44.56-90.67 49.47zm205.96-123.22l-0.25 122.75-36.57 0.26c-20.12 0.15-36.88-0.04-37.25-0.41-0.37-0.38-0.68-70.13-0.68-155.02v-154.33h72.75c77.6 0.01 93.49 0.65 110.49 4.47 26.32 5.92 48.68 19.94 62.36 39.11 24.43 34.24 22.74 94.98-3.53 127.11-8.77 10.72-23.97 20.87-41.82 27.92-2.14 0.84-0.3 3.76 34.75 55.12 20.35 29.83 37 54.7 37 55.26 0 0.7-13.8 0.95-42.17 0.77l-42.16-0.26-54.34-79.82c-29.88-43.91-54.33-80-54.33-80.2 0-0.2 17.21-0.51 38.25-0.68 37.27-0.31 38.4-0.37 43.99-2.63 17.38-6.99 25.88-20.17 25.96-40.25 0.1-23.26-11.86-37.06-35.41-40.88-3.46-0.57-22.15-1.03-41.54-1.03l-35.24-0.01zm507.75 121.24c-19.39 2.06-36.16 0.73-54.5-4.33-18.93-5.21-31.06-10.75-47.12-21.51-34.14-22.88-57.48-57.92-65.38-98.15-2.56-13.05-3.09-37.18-1.11-50.62 5.2-35.28 19.07-63.07 43.59-87.38 20.06-19.89 41.53-32.56 67.52-39.86 31.79-8.93 66.52-7.04 98.72 5.39 13.73 5.3 35.59 18.33 41.67 24.84l2.4 2.56-2.88 3.79c-1.58 2.08-9.43 11.43-17.44 20.78-8.01 9.35-16.64 19.56-19.19 22.7l-4.63 5.69-6.62-5.01c-7.72-5.85-20.48-12.17-29.03-14.38-8.69-2.25-22.67-2.94-32.64-1.61-36.79 4.91-66.06 32.66-72.33 68.57-5.02 28.8 2.85 53.8 23.47 74.6 12.46 12.57 26.19 19.91 43.93 23.49 10.15 2.05 29.16 1.53 38.57-1.06 7.65-2.1 22.67-9.66 28.5-14.33 19.85-15.93 30.07-34.97 33.53-62.41l0.59-4.75h67.72l0.63 2.85c0.34 1.57 0.14 6.86-0.45 11.75-4.11 34.26-15.66 60.9-37.41 86.3-8.38 9.78-14.85 15.46-28.61 25.11-22.74 15.96-44.28 24.09-71.5 26.98zm-202.5-307.99v310h-74v-310zm-623 182v70.15l48.75-0.44c29.07-0.27 50.57-0.87 53.26-1.5 20.4-4.78 30-14.36 30.83-30.75 0.75-14.91-4.51-24.48-16.88-30.73-11.89-6.01-19.48-6.72-71.71-6.72zm0.75-57.56c0.41 0.43 18.52 0.57 40.25 0.3 32.99-0.39 40.74-0.76 47-2.23 13.94-3.27 23.49-9.92 27.63-19.24 2.11-4.75 2.38-18.25 0.48-23.69-1.83-5.2-8.41-12.19-14.3-15.18-10.38-5.26-14.1-5.64-59.56-6.13l-42.25-0.45v32.92c0 18.11 0.34 33.28 0.75 33.7zm1025.72-47.39c-6.95 3.41-19.72 3.83-27.21 0.88-12.63-4.97-21.45-17.8-21.54-31.32-0.06-10.15 2.31-16.45 8.87-23.53 7.65-8.27 13.16-10.56 25.41-10.56 11.77 0 17.72 2.33 24.53 9.62 7.01 7.49 8.96 12.57 8.96 23.36 0.01 7.67-0.38 9.84-2.66 14.7-3.26 6.94-9.7 13.58-16.36 16.85zm-392.36 332.94c-7.56 1.42-36.55 1.16-42.26-0.38-11.54-3.1-13.33-6.49-13.34-25.11 0-17.11 1.21-20.55 8.42-23.88 4.22-1.96 6.27-2.12 27.07-2.12 26.01 0 28.4 0.59 32.29 7.89 1.93 3.64 2.18 5.66 2.2 17.61 0.01 11.54-0.28 14.07-1.99 17.44-2.6 5.12-5.78 7.31-12.39 8.55zm48.89-12.99v13h-7.33c-4.04 0-7.64-0.3-8-0.67-0.37-0.36-0.67-11.84-0.67-25.5v-24.83l26.75 0.01c19.24 0.02 27.42 0.37 29.15 1.25 4.5 2.31 6.51 6.28 6.87 13.52 0.38 7.55-1.61 12.88-5.52 14.8l-2.24 1.1 2.54 1.16c3.35 1.53 5.45 6.77 5.45 13.63v5.53h-16v-4.57c0-8.4-0.07-8.43-16.54-8.43zm123.18 11.73c-2.82 1.21-8.12 1.65-22.68 1.88-24.57 0.38-29.94-0.69-32.99-6.59-0.83-1.61-1.51-4.52-1.51-6.47v-3.55h7.76c7.09 0 7.85 0.19 8.75 2.25 0.94 2.14 1.6 2.26 13.99 2.54 7.15 0.16 13.98 0.04 15.18-0.25 2.94-0.73 3.99-4.29 1.89-6.4-1.36-1.36-4.78-1.73-19.86-2.16-15.96-0.45-18.66-0.77-21.72-2.55-1.92-1.12-4.04-3.14-4.72-4.48-1.7-3.35-1.59-13.26 0.19-17.52 2.39-5.71 6.16-6.73 26.61-7.22 27.14-0.66 32.69 1.28 33.7 11.76l0.48 5.03h-7.65c-7.24 0-7.7-0.13-8.6-2.5-0.95-2.49-1.01-2.5-13.89-2.5-7.12 0-13.66 0.27-14.53 0.61-1.88 0.72-2.1 4.73-0.33 6.15 0.69 0.55 9.41 1.2 19.37 1.45 15.71 0.4 18.58 0.72 21.5 2.43 4.57 2.67 5.85 5.64 5.87 13.66 0.01 8.41-1.82 12.3-6.81 14.43zm196.14-336.37c8.53 3.02 17.29 1.76 25.34-3.64 13.9-9.33 15.4-32.56 2.82-43.6-5.48-4.82-9.96-6.45-17.98-6.54-9.56-0.11-15.23 2.22-20.98 8.61-7.85 8.72-9.49 20.51-4.39 31.37 2.57 5.46 9.55 11.8 15.19 13.8zm-826.32 325.68v11.96h-57v-51h56.1l-0.6 11.5-19.75 0.27-19.75 0.27v7.96h38.1l-0.3 5.25-0.3 5.25-18.81 0.27-18.81 0.27 0.31 3.73 0.31 3.73zm142 0v11.96h-56v-51h55v12h-40.12l0.62 7.5 18.75 0.27 18.75 0.27v10.96h-38.12l0.62 7.5zm120.46 2.96l-4.92 9h-8.27c-4.55 0-8.26-0.34-8.25-0.75 0.01-0.41 6.05-11.78 13.42-25.25l13.4-24.5h21.32l13.4 24.5c7.37 13.47 13.41 24.84 13.42 25.25 0.01 0.41-3.7 0.75-8.25 0.75h-8.27l-4.92-9zm-45.75-16l-13.24 24.5-9.66 0.29-9.67 0.28-4.5-8.28c-8.77-16.16-22.64-42.18-22.64-42.48 0-0.17 3.79-0.31 8.42-0.31h8.42l9.73 18.55c5.35 10.21 10.05 18.19 10.45 17.75 0.4-0.44 4.95-8.79 10.11-18.54l9.37-17.75h8.25c4.54-0.01 8.24 0.33 8.22 0.74-0.02 0.41-5.99 11.78-13.26 25.25zm148.29-12.93v37.93h-15v-37.93l-10.75-0.29-10.75-0.28-0.6-12.5h60.2l-0.6 12.5-11.25 0.28zm-295 24.98v12.95h-51v-51h15l0.12 17.5c0.07 9.62 0.19 18.06 0.26 18.75 0.09 0.94 4.56 1.32 17.87 1.52zm760.8-337.8l-0.3 5.25-4.75 0.3-4.75 0.31v-38.32l11.93 0.35c13.5 0.41 16.08 1.5 19.42 8.22 2.37 4.77 1.57 9.52-2.37 14.01l-2.92 3.32 3.45 5.41c1.89 2.97 3.45 5.74 3.46 6.15 0.02 0.41-1.99 0.75-4.46 0.75-4.33 0-4.62-0.19-8.14-5.5-3.2-4.82-4.06-5.5-6.96-5.5-3.28 0-3.31 0.04-3.61 5.25zm-405.75 337.79c1.9 0.48 8.8 0.75 15.34 0.61 15.03-0.34 15.61-0.83 15.61-13.04v-0.37c0-5.34 0-8.35-1.49-10.05-1.93-2.19-6.35-2.19-16.47-2.19h-1.04c-10.16 0-14.59 0-16.51 2.19-1.49 1.7-1.49 4.69-1.49 10v0.34c0 9.23 0.97 11.23 6.05 12.51zm82.64-13.68c0.38 0.38 7.01 0.57 14.72 0.42l14.02-0.28 1.5-2.68c1.13-2.02 1.26-3.38 0.51-5.5l-0.99-2.82-15.22-0.28-15.23-0.27v5.36c0 2.94 0.31 5.67 0.69 6.05zm-238.06 5.84c0.59 0.96 16.75 1.08 17.7 0.14 0.61-0.61-6.42-14.74-8.3-16.68-0.92-0.95-10.17 15.31-9.4 16.54zm562.04-342.87c0.36 0.37 1.68 0.67 2.93 0.67 6.82 0 10.99-4.92 8.02-9.46-1.42-2.16-2.42-2.54-6.64-2.54h-4.98v5.33c0 2.94 0.3 5.64 0.67 6z'
+
+const SWOOSH_PATH =
+  'm992.45 183.37l0.56-5.33-37.51-0.54-0.3-5.22-0.3-5.23 35.59-42.77c19.58-23.53 36.2-42.92 36.94-43.08 0.73-0.17 7.33 7.03 14.65 16 13.53 16.56 35.32 42.46 50.4 59.93 7.91 9.16 8.33 9.89 8.67 15l0.35 5.37-19.61 0.27-19.61 0.27-0.66 8.23q-0.11 1.32-0.23 2.63c0.29-3.62 0.34-6.88 0.08-8.05l-0.63-2.85h-67.72l-0.59 4.75q-0.05 0.31-0.08 0.62zm52.84 63.46c-5.84 11.71-13.15 22.51-21.87 32.28l0.19-0.21c8.85-10.34 16.02-20.89 21.68-32.07zm-61.31-32.69c-5.58 11.98-13.74 22-24.98 31.02 10.94-8.78 19.29-19.16 24.98-31.02zm-20.23 107.16c-12.48 5.08-25.35 8.1-40.22 9.69 14.7-1.57 27.75-4.66 40.22-9.69zm35.42-20.25q-1.32 0.96-2.67 1.91-0.17 0.12-0.32 0.23 1.55-1.11 2.99-2.14z'
+
+/* viewBox crops over the source artwork (1158 x 447). */
+const VIEW = {
+  full: '0 0 1158 447',      // wordmark + tagline
+  wordmark: '0 4 1158 346',  // letterforms only
+  mark: '-5.5 8 340 340',      // the "b" monogram, squared up for a badge
+}
+
+/*
+ * Fills are classes rather than attributes so the logo follows the active
+ * theme. `inverted` forces the on-dark treatment for placements that are
+ * dark in both themes, such as the sign-in panel.
+ */
+const INK_CLASS = 'fill-forest-900 dark:fill-white'
+const INK_CLASS_INVERTED = 'fill-white'
+const ACCENT_CLASS = 'fill-lime-600 dark:fill-lime-400'
+const ACCENT_CLASS_INVERTED = 'fill-lime-400'
+
+/** The full lockup. `withTagline` includes the strapline beneath the wordmark. */
+export function BrioWordmark({
+  height = 26,
+  withTagline,
+  inverted,
+  className,
+  title = 'Brio',
+}: {
+  height?: number
+  withTagline?: boolean
+  inverted?: boolean
+  className?: string
+  title?: string
+}) {
+  const view = withTagline ? VIEW.full : VIEW.wordmark
+  const [, , vw, vh] = view.split(' ').map(Number)
+
+  return (
+    <svg
+      viewBox={view}
+      height={height}
+      width={(height * vw) / vh}
+      role="img"
+      aria-label={title}
+      className={cn('block shrink-0', className)}
+    >
+      <path d={WORDMARK_PATH} className={inverted ? INK_CLASS_INVERTED : INK_CLASS} />
+      <path d={SWOOSH_PATH} className={inverted ? ACCENT_CLASS_INVERTED : ACCENT_CLASS} />
+    </svg>
+  )
+}
+
+/** Square badge carrying the "b" monogram — for collapsed nav, avatars, favicons. */
+export function BrioMark({
+  size = 34,
+  className,
+  inverted,
+  bare,
+}: {
+  size?: number
+  className?: string
+  inverted?: boolean
+  bare?: boolean
+}) {
+  const glyph = (
+    <svg viewBox={VIEW.mark} width={size * (bare ? 1 : 0.5)} height={size * (bare ? 1 : 0.5)} aria-hidden className="relative">
+      {/* On the forest badge the glyph is always lime; bare marks follow the theme. */}
+      <path d={WORDMARK_PATH} className={bare && !inverted ? INK_CLASS : 'fill-lime-400'} />
+    </svg>
+  )
+
+  if (bare) return <span className={cn('inline-flex shrink-0', className)}>{glyph}</span>
+
   return (
     <span
       className={cn(
@@ -18,17 +97,19 @@ export function BrioMark({ size = 32, className, inverted }: { size?: number; cl
       {!inverted && (
         <span
           className="absolute inset-0"
-          style={{ background: 'radial-gradient(80% 80% at 78% 18%, rgba(168,224,90,.45) 0%, transparent 62%)' }}
+          style={{ background: 'radial-gradient(80% 80% at 76% 16%, rgba(168,224,90,.42) 0%, transparent 62%)' }}
         />
       )}
-      <svg width={size * 0.54} height={size * 0.54} viewBox="0 0 24 24" fill="none" className="relative">
-        <path d="M12 3.4 21 15.2h-5.6L12 10.2 8.6 15.2H3L12 3.4Z" fill="#a8e05a" />
-        <path d="M6.6 18.1h10.8l1.6 2.4H5L6.6 18.1Z" fill="#ffffff" fillOpacity={0.85} />
-      </svg>
+      {glyph}
     </span>
   )
 }
 
+/**
+ * The logo as used in the sidebar and on the sign-in screen. The source
+ * artwork is already a complete lockup, so it stands alone — pairing it with
+ * the badge would read as "b brio". Use <BrioMark> where only an icon fits.
+ */
 export function BrioLogo({
   size = 'md',
   inverted,
@@ -38,32 +119,11 @@ export function BrioLogo({
   inverted?: boolean
   showTagline?: boolean
 }) {
-  const mark = { sm: 28, md: 34, lg: 44 }[size]
-  const text = { sm: 'text-[17px]', md: 'text-[20px]', lg: 'text-[26px]' }[size]
-  return (
-    <span className="inline-flex items-center gap-2.5 select-none">
-      <BrioMark size={mark} inverted={inverted} />
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            'font-display font-extrabold tracking-tight',
-            text,
-            inverted ? 'text-white' : 'text-forest-900',
-          )}
-        >
-          Brio
-        </span>
-        {showTagline && (
-          <span
-            className={cn(
-              'text-[9px] font-semibold uppercase tracking-[0.16em] mt-1',
-              inverted ? 'text-white/70' : 'text-ink-3',
-            )}
-          >
-            Business Operations
-          </span>
-        )}
-      </span>
-    </span>
-  )
+  // The tagline band is a small fraction of the artwork, so the whole lockup
+  // has to run considerably taller before the strapline is legible at all.
+  const height = showTagline
+    ? { sm: 44, md: 60, lg: 84 }[size]
+    : { sm: 20, md: 28, lg: 38 }[size]
+
+  return <BrioWordmark height={height} withTagline={showTagline} inverted={inverted} className="select-none" />
 }

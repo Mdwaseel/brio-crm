@@ -189,7 +189,7 @@ export function Dropdown({
       {open && (
         <div
           className={cn(
-            'absolute top-[calc(100%+8px)] z-50 bg-surface ring-1 ring-black/[0.06] rounded-2xl shadow-pop py-1.5 animate-slide-down',
+            'absolute top-[calc(100%+8px)] z-50 bg-surface ring-1 ring-[color:var(--ring-hairline)] rounded-2xl shadow-pop py-1.5 animate-slide-down',
             align === 'right' ? 'right-0' : 'left-0',
             width,
           )}
@@ -319,7 +319,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           {items.map((t) => (
             <div
               key={t.id}
-              className="bg-surface ring-1 ring-black/[0.06] rounded-2xl shadow-pop px-4 py-3 flex items-start gap-3 animate-toast-in"
+              className="bg-surface ring-1 ring-[color:var(--ring-hairline)] rounded-2xl shadow-pop px-4 py-3 flex items-start gap-3 animate-toast-in"
             >
               <span className="mt-0.5 shrink-0">{TOAST_ICON[t.kind]}</span>
               <div className="min-w-0 flex-1">

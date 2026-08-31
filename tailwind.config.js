@@ -38,6 +38,7 @@ const lime = {
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -45,6 +46,8 @@ export default {
         lime,
         brand: forest,
         bronze: lime,
+        /* Accent ink for links and emphasis — deep forest on light, lime on dark. */
+        accent: 'rgb(var(--accent-ink) / <alpha-value>)',
         surface: 'rgb(var(--surface) / <alpha-value>)',
         'surface-muted': 'rgb(var(--surface-muted) / <alpha-value>)',
         'surface-sunken': 'rgb(var(--surface-sunken) / <alpha-value>)',
@@ -53,10 +56,27 @@ export default {
         ink: 'rgb(var(--text-primary) / <alpha-value>)',
         'ink-2': 'rgb(var(--text-secondary) / <alpha-value>)',
         'ink-3': 'rgb(var(--text-tertiary) / <alpha-value>)',
-        success: { DEFAULT: '#1f8f5f', soft: '#e6f5ee', ink: '#136544' },
-        warning: { DEFAULT: '#b4770a', soft: '#fdf3e0', ink: '#8a5a05' },
-        danger: { DEFAULT: '#d63f3f', soft: '#fdeceb', ink: '#a32a2a' },
-        info: { DEFAULT: '#2b7fb8', soft: '#eaf4fa', ink: '#1e5f8c' },
+        /* Status colours resolve through tokens so they re-tone in dark. */
+        success: {
+          DEFAULT: 'rgb(var(--success) / <alpha-value>)',
+          soft: 'rgb(var(--success-soft) / <alpha-value>)',
+          ink: 'rgb(var(--success-ink) / <alpha-value>)',
+        },
+        warning: {
+          DEFAULT: 'rgb(var(--warning) / <alpha-value>)',
+          soft: 'rgb(var(--warning-soft) / <alpha-value>)',
+          ink: 'rgb(var(--warning-ink) / <alpha-value>)',
+        },
+        danger: {
+          DEFAULT: 'rgb(var(--danger) / <alpha-value>)',
+          soft: 'rgb(var(--danger-soft) / <alpha-value>)',
+          ink: 'rgb(var(--danger-ink) / <alpha-value>)',
+        },
+        info: {
+          DEFAULT: 'rgb(var(--info) / <alpha-value>)',
+          soft: 'rgb(var(--info-soft) / <alpha-value>)',
+          ink: 'rgb(var(--info-ink) / <alpha-value>)',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'sans-serif'],

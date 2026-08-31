@@ -136,7 +136,7 @@ export function Login({ onSignIn }: { onSignIn: () => void }) {
               <button
                 type="button"
                 onClick={() => demo('Password reset link sent')}
-                className="text-[13px] font-medium text-forest-800 hover:underline"
+                className="text-[13px] font-medium text-accent hover:underline"
               >
                 Forgot password?
               </button>
@@ -158,7 +158,7 @@ export function Login({ onSignIn }: { onSignIn: () => void }) {
 
           <p className="text-2xs text-ink-3 text-center mt-8">
             Need access for your team?{' '}
-            <button onClick={() => demo('Request sent to workspace admin')} className="font-medium text-forest-800 hover:underline">
+            <button onClick={() => demo('Request sent to workspace admin')} className="font-medium text-accent hover:underline">
               Contact your workspace admin
             </button>
           </p>

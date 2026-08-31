@@ -173,7 +173,7 @@ export function Progress({
   const resolved =
     tone === 'auto' ? (value >= 75 ? 'success' : value >= 50 ? 'brand' : value >= 30 ? 'warning' : 'danger') : tone
   const bars = {
-    brand: 'bg-forest-800',
+    brand: 'bg-forest-800 dark:bg-lime-500',
     success: 'bg-lime-500',
     warning: 'bg-warning',
     danger: 'bg-danger',

@@ -121,7 +121,7 @@ export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => 
                     )}
                   >
                     <span className={cn('h-8 w-8 rounded-full inline-flex items-center justify-center shrink-0',
-                      active ? 'bg-forest-900 text-lime-300' : 'bg-surface-sunken text-ink-3')}>
+                      active ? 'bg-forest-900 dark:bg-forest-600 text-lime-300' : 'bg-surface-sunken text-ink-3')}>
                       <Icon size={14} />
                     </span>
                     <span className="min-w-0 flex-1">

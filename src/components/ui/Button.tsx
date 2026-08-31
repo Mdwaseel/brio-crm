@@ -7,13 +7,14 @@ type Size = 'xs' | 'sm' | 'md' | 'lg'
 
 const VARIANTS: Record<Variant, string> = {
   primary:
-    'bg-forest-900 text-white border border-forest-900 hover:bg-forest-950 hover:border-forest-950 shadow-sm active:bg-forest-950',
+    'bg-forest-900 text-white border border-forest-900 hover:bg-forest-950 hover:border-forest-950 shadow-sm active:bg-forest-950 '
+    + 'dark:bg-lime-400 dark:text-forest-950 dark:border-lime-400 dark:hover:bg-lime-300 dark:hover:border-lime-300 dark:active:bg-lime-500',
   accent:
     'bg-lime-400 text-forest-950 border border-lime-400 hover:bg-lime-500 hover:border-lime-500 shadow-sm font-semibold',
   secondary:
     'bg-surface text-ink border border-line hover:bg-surface-muted hover:border-line-strong shadow-xs active:bg-surface-sunken',
-  outline: 'bg-transparent text-forest-800 border border-forest-200 hover:bg-forest-50',
-  subtle: 'bg-surface-sunken text-ink-2 border border-transparent hover:bg-lime-100 hover:text-forest-800',
+  outline: 'bg-transparent text-forest-800 border border-forest-200 hover:bg-forest-50 dark:text-lime-200 dark:border-forest-600 dark:hover:bg-forest-700/40',
+  subtle: 'bg-surface-sunken text-ink-2 border border-transparent hover:bg-lime-100 hover:text-forest-800 dark:hover:bg-lime-400/15 dark:hover:text-lime-200',
   ghost: 'bg-transparent text-ink-2 border border-transparent hover:bg-surface-sunken hover:text-ink',
   danger: 'bg-danger text-white border border-danger hover:bg-danger-ink shadow-sm',
 }

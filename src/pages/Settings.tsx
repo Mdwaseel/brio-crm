@@ -10,6 +10,7 @@ import {
 } from '@/components/ui'
 import { DEPARTMENTS } from '@/data/people'
 import { cn } from '@/lib/utils'
+import { useTheme, THEME_OPTIONS } from '@/lib/theme'
 
 const SECTIONS = [
   { id: 'workspace', label: 'Workspace', icon: Building2, desc: 'Company profile, locale and branding' },
@@ -46,6 +47,7 @@ const INTEGRATIONS = [
 export function Settings() {
   const { demo } = useToast()
   const navigate = useNavigate()
+  const { theme, preference, setPreference } = useTheme()
   const [active, setActive] = useState('workspace')
   const [toggles, setToggles] = useState<Record<string, boolean>>({
     slaEmail: true, slaPush: true, dailyDigest: true, weeklyReport: true,
@@ -76,10 +78,10 @@ export function Settings() {
                 onClick={() => (s.route ? navigate(s.route) : setActive(s.id))}
                 className={cn(
                   'w-full flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-left transition-colors',
-                  active === s.id && !s.route ? 'bg-brand-50 text-brand-800' : 'text-ink-2 hover:bg-surface-muted hover:text-ink',
+                  active === s.id && !s.route ? 'bg-lime-100 text-forest-900' : 'text-ink-2 hover:bg-surface-muted hover:text-ink',
                 )}
               >
-                <s.icon size={16} className={cn('shrink-0', active === s.id && !s.route ? 'text-brand-700' : 'text-ink-3')} />
+                <s.icon size={16} className={cn('shrink-0', active === s.id && !s.route ? 'text-forest-700' : 'text-ink-3')} />
                 <span className="flex-1 min-w-0">
                   <span className="block text-[13px] font-medium truncate">{s.label}</span>
                   <span className="block text-[10px] text-ink-3 truncate">{s.desc}</span>
@@ -105,6 +107,48 @@ export function Settings() {
                     <Label htmlFor="ws-addr">Registered address</Label>
                     <Textarea id="ws-addr" defaultValue="Level 8, Apex House, Bandra Kurla Complex, Mumbai 400051, Maharashtra, India" />
                   </div>
+                </div>
+              </Card>
+
+              <Card>
+                <CardHeader title="Appearance" subtitle="How Brio looks on this device" />
+                <div className="p-5 pt-2">
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    {THEME_OPTIONS.map((o) => {
+                      const selected = preference === o.id
+                      return (
+                        <button
+                          key={o.id}
+                          onClick={() => { setPreference(o.id); demo(`Appearance set to ${o.label.toLowerCase()}`) }}
+                          aria-pressed={selected}
+                          className={cn(
+                            'rounded-2xl p-4 text-left transition-colors ring-1',
+                            selected
+                              ? 'ring-lime-400 bg-lime-50'
+                              : 'ring-[color:var(--ring-hairline)] hover:bg-surface-muted',
+                          )}
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <span
+                              className={cn(
+                                'h-8 w-8 rounded-full inline-flex items-center justify-center',
+                                selected ? 'bg-lime-400 text-forest-950' : 'bg-surface-sunken text-ink-2',
+                              )}
+                            >
+                              <o.icon size={16} />
+                            </span>
+                            {selected && <Check size={15} className="text-accent" />}
+                          </div>
+                          <p className="mt-3 text-[14px] font-semibold text-ink">{o.label}</p>
+                          <p className="text-2xs text-ink-3 mt-0.5 leading-relaxed">{o.hint}</p>
+                        </button>
+                      )
+                    })}
+                  </div>
+                  <p className="text-2xs text-ink-3 mt-3.5">
+                    Currently showing the <span className="font-semibold text-ink">{theme}</span> palette
+                    {preference === 'system' && ' — following your device setting'}. Saved to this browser only.
+                  </p>
                 </div>
               </Card>
 

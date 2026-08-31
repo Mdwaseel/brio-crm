@@ -2,10 +2,13 @@ import { useNavigate } from 'react-router-dom'
 import {
   Menu, Search, Bell, ChevronDown, Calendar, Download, User, SlidersHorizontal, ShieldCheck, LogOut,
   AlertTriangle, UserPlus, HardHat, RefreshCw, MessageSquareHeart, FileCheck2, Command, Settings, HelpCircle,
+  Sun, Moon,
 } from 'lucide-react'
 import { cn, relTime } from '@/lib/utils'
+import { useTheme, THEME_OPTIONS } from '@/lib/theme'
 import { Button, IconButton, Dropdown, MenuItem, MenuLabel, MenuDivider, Badge, useToast } from '@/components/ui'
 import { notifications } from '@/data/analytics'
+import { BrioLogo } from './Logo'
 
 const NOTIF_ICON = {
   sla: { icon: AlertTriangle, tone: 'bg-danger-soft text-danger' },
@@ -23,10 +26,60 @@ function RoundAction({ label, onClick, children }: { label: string; onClick: () 
       onClick={onClick}
       aria-label={label}
       title={label}
-      className="h-10 w-10 inline-flex items-center justify-center rounded-full bg-surface ring-1 ring-black/[0.05] text-ink-2 hover:text-ink hover:ring-lime-300 transition-colors shadow-xs"
+      className="h-10 w-10 inline-flex items-center justify-center rounded-full bg-surface ring-1 ring-[color:var(--ring-hairline)] text-ink-2 hover:text-ink hover:ring-lime-300 transition-colors shadow-xs"
     >
       {children}
     </button>
+  )
+}
+
+/**
+ * Click flips light/dark; the caret opens the three-way choice so "follow the
+ * system" stays reachable without burying it in Settings.
+ */
+function ThemeControl() {
+  const { theme, preference, setPreference, toggle } = useTheme()
+
+  return (
+    <div className="flex items-center rounded-full bg-surface ring-1 ring-[color:var(--ring-hairline)] shadow-xs">
+      <button
+        onClick={toggle}
+        aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+        title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+        className="h-10 w-10 inline-flex items-center justify-center rounded-full text-ink-2 hover:text-ink transition-colors"
+      >
+        {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+      </button>
+      <Dropdown
+        width="w-48"
+        align="right"
+        trigger={({ toggle: open }) => (
+          <button
+            onClick={open}
+            aria-label="Theme options"
+            className="h-10 w-6 -ml-2 pr-1.5 inline-flex items-center justify-center rounded-r-full text-ink-3 hover:text-ink transition-colors"
+          >
+            <ChevronDown size={13} />
+          </button>
+        )}
+      >
+        {(close) => (
+          <>
+            <MenuLabel>Appearance</MenuLabel>
+            {THEME_OPTIONS.map((o) => (
+              <MenuItem
+                key={o.id}
+                icon={<o.icon size={14} />}
+                active={preference === o.id}
+                onClick={() => { close(); setPreference(o.id) }}
+              >
+                {o.label}
+              </MenuItem>
+            ))}
+          </>
+        )}
+      </Dropdown>
+    </div>
   )
 }
 
@@ -46,9 +99,14 @@ export function Topbar({
   return (
     <header className="sticky top-0 z-30 h-[72px] bg-surface-muted/85 backdrop-blur-md">
       <div className="h-full px-4 sm:px-6 lg:px-7 flex items-center gap-3">
-        <IconButton label="Open navigation" className="lg:hidden bg-surface ring-1 ring-black/[0.05]" onClick={onMenuClick}>
+        <IconButton label="Open navigation" className="lg:hidden bg-surface ring-1 ring-[color:var(--ring-hairline)]" onClick={onMenuClick}>
           <Menu size={18} />
         </IconButton>
+
+        {/* The sidebar carries the brand on desktop; below lg it is off-canvas. */}
+        <span className="lg:hidden">
+          <BrioLogo size="sm" />
+        </span>
 
         <div className="flex-1" />
 
@@ -56,7 +114,7 @@ export function Topbar({
         <button
           onClick={onSearchClick}
           className={cn(
-            'group flex items-center gap-2.5 h-11 pl-4 pr-2 rounded-full bg-surface ring-1 ring-black/[0.05] shadow-xs',
+            'group flex items-center gap-2.5 h-11 pl-4 pr-2 rounded-full bg-surface ring-1 ring-[color:var(--ring-hairline)] shadow-xs',
             'text-ink-3 hover:ring-lime-300 transition-shadow',
             'w-full max-w-[340px]',
           )}
@@ -90,6 +148,8 @@ export function Topbar({
           )}
         </Dropdown>
 
+        <ThemeControl />
+
         <div className="hidden md:flex items-center gap-2">
           <RoundAction label="Export" onClick={() => demo('Export started')}>
             <Download size={17} />
@@ -110,7 +170,7 @@ export function Topbar({
               onClick={toggle}
               aria-label={`Notifications, ${unread} unread`}
               className={cn(
-                'relative h-10 w-10 inline-flex items-center justify-center rounded-full ring-1 ring-black/[0.05] shadow-xs transition-colors',
+                'relative h-10 w-10 inline-flex items-center justify-center rounded-full ring-1 ring-[color:var(--ring-hairline)] shadow-xs transition-colors',
                 open ? 'bg-forest-900 text-lime-300 ring-forest-900' : 'bg-surface text-ink-2 hover:text-ink hover:ring-lime-300',
               )}
             >
@@ -158,7 +218,7 @@ export function Topbar({
               <div className="px-4 py-3 mt-1 border-t border-line/70">
                 <button
                   onClick={() => { close(); demo('Marked all as read') }}
-                  className="text-2xs font-semibold text-forest-700 hover:underline"
+                  className="text-2xs font-semibold text-accent hover:underline"
                 >
                   Mark all as read
                 </button>

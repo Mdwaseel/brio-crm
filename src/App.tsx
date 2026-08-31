@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import { ToastProvider } from '@/components/ui'
+import { ThemeProvider } from '@/lib/theme'
 import { AppShell } from '@/components/layout/AppShell'
 import { Login } from '@/pages/Login'
 import { Dashboard } from '@/pages/Dashboard'
@@ -69,8 +70,9 @@ export default function App() {
   }
 
   return (
-    <ToastProvider>
-      <BrowserRouter>
+    <ThemeProvider>
+      <ToastProvider>
+        <BrowserRouter>
         <Routes>
           <Route path="/login" element={<LoginRoute onSignIn={() => setSession(true)} />} />
           {authed ? (
@@ -101,7 +103,8 @@ export default function App() {
           )}
           <Route path="/" element={<Navigate to={authed ? '/dashboard' : '/login'} replace />} />
         </Routes>
-      </BrowserRouter>
-    </ToastProvider>
+        </BrowserRouter>
+      </ToastProvider>
+    </ThemeProvider>
   )
 }

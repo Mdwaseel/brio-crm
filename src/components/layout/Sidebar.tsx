@@ -92,8 +92,8 @@ export function Sidebar({
           <button
             onClick={onProfileClick}
             className={cn(
-              'w-full flex items-center gap-2.5 rounded-2xl bg-surface-muted ring-1 ring-black/[0.04] p-2.5',
-              'hover:ring-lime-300 hover:bg-lime-50/60 transition-colors text-left',
+              'w-full flex items-center gap-2.5 rounded-2xl bg-surface-muted ring-1 ring-[color:var(--ring-hairline)] p-2.5',
+              'hover:ring-lime-300 hover:bg-lime-50/60 dark:hover:bg-lime-400/10 transition-colors text-left',
               collapsed && 'lg:justify-center lg:p-2',
             )}
           >
@@ -130,7 +130,7 @@ export function Sidebar({
                           'transition-colors duration-150',
                           collapsed && 'lg:justify-center lg:px-0',
                           isActive
-                            ? 'bg-forest-900 text-white shadow-sm'
+                            ? 'bg-forest-900 text-white shadow-sm dark:bg-forest-700'
                             : 'text-ink-2 hover:bg-surface-muted hover:text-ink',
                         )
                       }

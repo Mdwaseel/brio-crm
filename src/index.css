@@ -22,13 +22,62 @@
     --text-tertiary: 134 148 139;
 
     --success: 31 143 95;
+    --success-soft: 230 245 238;
+    --success-ink: 19 101 68;
     --warning: 180 119 10;
+    --warning-soft: 253 243 224;
+    --warning-ink: 138 90 5;
     --danger: 214 63 63;
+    --danger-soft: 253 236 235;
+    --danger-ink: 163 42 42;
     --info: 43 127 184;
+    --info-soft: 234 244 250;
+    --info-ink: 30 95 140;
 
     /* Hero gradient stops */
     --hero-from: 143 209 63;
     --hero-to: 194 236 126;
+
+    /* Accent ink for links and emphasis */
+    --accent-ink: 28 87 62;
+
+    /* Hairline that rings every card — flips polarity in dark */
+    --ring-hairline: rgb(0 0 0 / 0.05);
+  }
+
+  /*
+   * Dark theme. Only the token values change: every surface, border and ink in
+   * the app resolves through these, so components need no dark variants of
+   * their own beyond the few places that hard-code a light-only colour.
+   */
+  .dark {
+    --surface: 22 33 27;
+    --surface-muted: 13 20 17;
+    --surface-sunken: 30 43 35;
+    --border: 39 53 44;
+    --border-strong: 55 72 60;
+
+    --text-primary: 236 243 238;
+    --text-secondary: 161 177 167;
+    --text-tertiary: 122 139 128;
+
+    --success: 74 190 133;
+    --success-soft: 22 54 41;
+    --success-ink: 134 222 181;
+    --warning: 214 155 46;
+    --warning-soft: 56 43 18;
+    --warning-ink: 240 197 116;
+    --danger: 240 113 113;
+    --danger-soft: 62 29 29;
+    --danger-ink: 248 165 165;
+    --info: 92 168 219;
+    --info-soft: 21 43 59;
+    --info-ink: 150 205 238;
+
+    --accent-ink: 194 236 126;
+    --ring-hairline: rgb(255 255 255 / 0.08);
+
+    color-scheme: dark;
   }
 
   * { border-color: rgb(var(--border)); }
@@ -57,7 +106,8 @@
 
   /* Soft, borderless card — the base surface of the whole system */
   .card {
-    @apply bg-surface rounded-2xl shadow-xs ring-1 ring-black/[0.04];
+    @apply bg-surface rounded-2xl shadow-xs ring-1;
+    --tw-ring-color: var(--ring-hairline);
   }
 
   .panel-title { @apply font-display text-[15px] font-semibold text-ink; }
@@ -81,6 +131,86 @@
   .scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
   .scroll-thin::-webkit-scrollbar-thumb { background: rgb(var(--border-strong)); border-radius: 999px; }
   .scroll-thin::-webkit-scrollbar-track { background: transparent; }
+}
+
+/*
+ * Soft-tint remap for dark.
+ *
+ * Across the app, the 50–200 steps of the green ramps are used as near-white
+ * chip and icon washes, and the 700–900 steps as the brand ink sitting on
+ * them. Both invert together: the wash becomes a translucent veil of the same
+ * hue over the dark surface, and the ink goes pale. Doing it here re-tones
+ * every page at once instead of scattering `dark:` variants over ~70 call
+ * sites, and it keeps the pairing consistent wherever it appears.
+ *
+ * The 950 step is deliberately excluded — it means "ink on a lime surface"
+ * (hero card, lime buttons), and those surfaces stay light in both themes.
+ *
+ * Two things this cannot reach, which still need their own `dark:` variants:
+ *   - variant classes such as `hover:bg-lime-100`, which compile to a
+ *     different selector
+ *   - the darker steps (forest-700 and up) used as solid panels
+ * Note it also outranks an equivalent `dark:` utility on the same element,
+ * since it is declared after the utilities layer — so don't pair the two.
+ */
+.dark .bg-forest-50 { background-color: rgb(90 167 127 / 0.09); }
+.dark .bg-forest-100 { background-color: rgb(90 167 127 / 0.16); }
+.dark .bg-lime-50 { background-color: rgb(143 209 63 / 0.08); }
+.dark .bg-lime-50\/60 { background-color: rgb(143 209 63 / 0.07); }
+.dark .bg-brand-50\/30 { background-color: rgb(90 167 127 / 0.06); }
+.dark .bg-brand-50\/40 { background-color: rgb(90 167 127 / 0.07); }
+.dark .bg-brand-50\/50 { background-color: rgb(90 167 127 / 0.08); }
+.dark .bg-lime-100 { background-color: rgb(143 209 63 / 0.15); }
+.dark .bg-lime-200 { background-color: rgb(143 209 63 / 0.22); }
+
+.dark .text-forest-600,
+.dark .text-forest-700,
+.dark .text-forest-800,
+.dark .text-forest-900 { color: rgb(220 239 227); }
+
+.dark .text-lime-700,
+.dark .text-lime-800,
+.dark .text-lime-900 { color: rgb(216 244 168); }
+
+.dark .border-forest-100 { border-color: rgb(90 167 127 / 0.22); }
+.dark .border-forest-200 { border-color: rgb(90 167 127 / 0.30); }
+.dark .border-lime-100 { border-color: rgb(143 209 63 / 0.20); }
+.dark .border-lime-200 { border-color: rgb(143 209 63 / 0.28); }
+
+/*
+ * Recharts draws grids, axes and slice outlines as SVG presentation
+ * attributes, which carry zero specificity — so a plain selector re-tones
+ * every chart in the app for dark mode without touching the pages that
+ * build them. Series colours stay as authored; only the chart furniture
+ * and the white slice separators need to follow the surface.
+ */
+.dark .recharts-cartesian-grid line,
+.dark .recharts-polar-grid line,
+.dark .recharts-polar-grid circle,
+.dark .recharts-polar-grid path,
+.dark .recharts-cartesian-axis-line,
+.dark .recharts-radar-polygon {
+  stroke: rgb(var(--border));
+}
+
+.dark .recharts-cartesian-axis-tick text,
+.dark .recharts-polar-angle-axis-tick text,
+.dark .recharts-polar-radius-axis-tick text,
+.dark .recharts-label {
+  fill: rgb(var(--text-tertiary));
+}
+
+/* Slice and node separators are painted white for the light card. */
+.dark .recharts-pie-sector path,
+.dark .recharts-sankey-node,
+.dark .recharts-funnel-trapezoid path {
+  stroke: rgb(var(--surface));
+}
+
+/* Line markers are punched out in white to sit on the light card. */
+.dark .recharts-line-dot,
+.dark .recharts-area-dot {
+  fill: rgb(var(--surface));
 }
 
 @media (prefers-reduced-motion: reduce) {
